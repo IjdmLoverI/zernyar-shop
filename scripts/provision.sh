@@ -55,3 +55,5 @@ wp plugin activate ua-commerce-kit zernyar-demo
 
 wp plugin delete hello akismet 2>/dev/null || true
 wp theme delete twentytwentythree twentytwentyfour 2>/dev/null || true
+
+wp zernyar seed

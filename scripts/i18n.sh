@@ -16,3 +16,10 @@ for plugin in ua-commerce-kit zernyar-demo; do
 		wp i18n make-mo "$dir/languages"
 	fi
 done
+
+theme=/var/www/html/wp-content/themes/zernyar
+wp i18n make-pot "$theme" "$theme/languages/zernyar.pot" --headers='{"Report-Msgid-Bugs-To":"https://github.com/IjdmLoverI/zernyar-shop/issues"}'
+if [ -f themes/zernyar/languages/uk.po ]; then
+	wp i18n update-po "$theme/languages/zernyar.pot" "$theme/languages/uk.po"
+	wp i18n make-mo "$theme/languages/uk.po" "$theme/languages"
+fi

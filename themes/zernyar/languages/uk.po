@@ -1,0 +1,464 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zernyar 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/IjdmLoverI/zernyar-shop/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-16T08:15:49+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: uk\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: zernyar\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Theme Name of the theme
+#: style.css
+#: functions.php:55
+#: patterns/footer.php:58
+msgid "Zernyar"
+msgstr "Зерняр"
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://github.com/IjdmLoverI/zernyar-shop"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Block theme for Zernyar, a demo coffee roastery store on WooCommerce."
+msgstr "Блокова тема для «Зерняра», демо-магазину кавової обсмажувальні на WooCommerce."
+
+#. Author of the theme
+#: style.css
+msgid "Kyrylo Buchynskyi"
+msgstr "Кирило Бучинський"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://github.com/IjdmLoverI"
+msgstr ""
+
+#. translators: %s: the lowest price.
+#: functions.php:92
+#, php-format
+msgid "from %s"
+msgstr "від %s"
+
+#: patterns/benefits.php
+msgctxt "Pattern title"
+msgid "Benefits"
+msgstr "Переваги"
+
+#: patterns/benefits.php:14
+msgid "We roast on Tuesday and ship from Wednesday, so the beans reach you at their best."
+msgstr "Обсмажуємо у вівторок і відправляємо із середи, тож зерно приїжджає у найкращій формі."
+
+#: patterns/benefits.php:18
+msgid "Ground for your brewer"
+msgstr "Мелемо під ваш спосіб"
+
+#: patterns/benefits.php:19
+msgid "Whole beans, or a grind for espresso, filter or the cezve."
+msgstr "У зернах або помел для еспресо, фільтра чи турки."
+
+#: patterns/benefits.php:23
+msgid "Nova Poshta in 1–3 days"
+msgstr "Нова Пошта за 1–3 дні"
+
+#: patterns/benefits.php:24
+msgid "To any branch or parcel locker in Ukraine."
+msgstr "У будь-яке відділення чи поштомат в Україні."
+
+#: patterns/benefits.php:28
+msgid "Pay as you like"
+msgstr "Оплата як зручно"
+
+#: patterns/benefits.php:29
+msgid "By card through WayForPay or in cash on delivery."
+msgstr "Карткою через WayForPay або при отриманні."
+
+#: patterns/brew-guide.php
+msgctxt "Pattern title"
+msgid "Brew guide"
+msgstr "Як заварити"
+
+#: patterns/brew-guide.php:13
+msgid "Espresso pours from a machine into a white cup"
+msgstr "Еспресо ллється з кавомашини в білу чашку"
+
+#: patterns/brew-guide.php:14
+msgid "Espresso"
+msgstr "Еспресо"
+
+#: patterns/brew-guide.php:15
+msgid "Dense blends with chocolate and nuts. 18 g of fine grind, 36 g in the cup, 25–30 seconds."
+msgstr "Щільні суміші з шоколадом і горіхами. 18 г тонкого помелу, 36 г у чашці, 25–30 секунд."
+
+#: patterns/brew-guide.php:16
+msgid "Coffee for espresso"
+msgstr "Кава для еспресо"
+
+#: patterns/brew-guide.php:21
+msgid "A pour-over dripper with a bloom of coffee"
+msgstr "Воронка для пуровера з кавою, що «розквітає»"
+
+#: patterns/brew-guide.php:22
+msgid "Filter"
+msgstr "Фільтр"
+
+#: patterns/brew-guide.php:23
+msgid "Light single origins with fruit and flowers. 15 g of medium grind to 250 ml of water at 94 °C."
+msgstr "Світлі моносорти з фруктами й квітами. 15 г середнього помелу на 250 мл води температурою 94 °C."
+
+#: patterns/brew-guide.php:24
+msgid "Coffee for filter"
+msgstr "Кава для фільтра"
+
+#: patterns/brew-guide.php:29
+msgid "A copper cezve on a dark table"
+msgstr "Мідна турка на темному столі"
+
+#: patterns/brew-guide.php:30
+msgid "Cezve"
+msgstr "Турка"
+
+#: patterns/brew-guide.php:31
+msgid "Darker roasts ground to powder. 8 g to 80 ml of cold water, heat slowly and take it off at the first rise."
+msgstr "Темніше обсмаження, змелене в пудру. 8 г на 80 мл холодної води, гріти повільно й зняти при першому підйомі пінки."
+
+#: patterns/brew-guide.php:32
+msgid "Coffee for the cezve"
+msgstr "Кава для турки"
+
+#: patterns/brew-guide.php:40
+#: patterns/hero.php:36
+msgid "How to brew"
+msgstr "Як заварити"
+
+#: patterns/catalog.php
+msgctxt "Pattern title"
+msgid "Catalog with filters"
+msgstr "Каталог із фільтрами"
+
+#: patterns/catalog.php:15
+msgid "Roast"
+msgstr "Обсмаження"
+
+#: patterns/catalog.php:16
+msgid "Origin"
+msgstr "Країна"
+
+#: patterns/catalog.php:17
+msgid "Processing"
+msgstr "Обробка"
+
+#: patterns/catalog.php:35
+msgid "Clear filters"
+msgstr "Скинути фільтри"
+
+#: patterns/catalog.php:47
+msgid "Category"
+msgstr "Категорія"
+
+#: patterns/catalog.php:75
+msgid "Price"
+msgstr "Ціна"
+
+#: patterns/checkout-header.php
+msgctxt "Pattern title"
+msgid "Checkout header"
+msgstr "Шапка оформлення"
+
+#: patterns/checkout-header.php:21
+msgid "Back to cart"
+msgstr "Назад до кошика"
+
+#: patterns/delivery-note.php
+msgctxt "Pattern title"
+msgid "Delivery and payment note"
+msgstr "Примітка про доставку й оплату"
+
+#: patterns/delivery-note.php:14
+msgid "Roasted on Tuesday, shipped from Wednesday"
+msgstr "Обсмажуємо у вівторок, відправляємо із середи"
+
+#: patterns/delivery-note.php:18
+msgid "Nova Poshta branch or parcel locker, 1–3 days"
+msgstr "Відділення чи поштомат Нової Пошти, 1–3 дні"
+
+#: patterns/delivery-note.php:22
+msgid "Card payment or cash on delivery"
+msgstr "Оплата карткою або при отриманні"
+
+#: patterns/featured-products.php
+msgctxt "Pattern title"
+msgid "Featured coffee"
+msgstr "Рекомендована кава"
+
+#: patterns/featured-products.php:20
+msgid "All coffee"
+msgstr "Уся кава"
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr "Футер"
+
+#: patterns/footer.php:22
+msgid "A small roastery that roasts specialty coffee every Tuesday and ships it across Ukraine the same week."
+msgstr "Невелика обсмажувальня: щовівторка обсмажуємо спешелті-каву й того ж тижня відправляємо по всій Україні."
+
+#: patterns/footer.php:30
+msgid "Store"
+msgstr "Магазин"
+
+#: patterns/footer.php:40
+msgid "Contacts"
+msgstr "Контакти"
+
+#: patterns/footer.php:44
+msgid "Kyiv, Ukraine"
+msgstr "Київ, Україна"
+
+#: patterns/footer.php:44
+msgid "Orders are shipped on weekdays"
+msgstr "Відправляємо замовлення в будні"
+
+#: patterns/footer.php:54
+msgid "A demo store for a portfolio: the roastery is made up, payments run in test mode and no order is shipped."
+msgstr "Демо-магазин для портфоліо: обсмажувальня вигадана, оплата тестова, замовлення не відправляються."
+
+#: patterns/hero.php
+msgctxt "Pattern title"
+msgid "Hero"
+msgstr "Головний банер"
+
+#: patterns/hero.php:26
+msgid "Single origins and blends for espresso, filter and the cezve. We grind for your brewer and ship by Nova Poshta."
+msgstr "Моносорти й суміші для еспресо, фільтра й турки. Мелемо під ваш спосіб і відправляємо Новою Поштою."
+
+#: patterns/hero.php:32
+msgid "Choose coffee"
+msgstr "Обрати каву"
+
+#: patterns/hero.php:46
+msgid "A roaster tips freshly roasted beans into the cooling tray"
+msgstr "Обсмажувальник висипає свіже зерно в лоток для охолодження"
+
+#: patterns/not-found.php
+msgctxt "Pattern title"
+msgid "Page not found"
+msgstr "Сторінку не знайдено"
+
+#: patterns/not-found.php:15
+msgid "This page is out of stock"
+msgstr "Цієї сторінки немає в наявності"
+
+#: patterns/not-found.php:19
+msgid "The link is broken or the page was moved. The coffee is still in the catalog."
+msgstr "Посилання застаріло або сторінку перенесли. А кава досі в каталозі."
+
+#: patterns/not-found.php:25
+msgid "Go to the catalog"
+msgstr "До каталогу"
+
+#: patterns/product-card.php
+msgctxt "Pattern title"
+msgid "Product card"
+msgstr "Картка товару"
+
+#: patterns/related-products.php
+msgctxt "Pattern title"
+msgid "Related coffee"
+msgstr "Схожа кава"
+
+#: patterns/related-products.php:15
+msgid "You may also like"
+msgstr "Вам також може сподобатися"
+
+#: patterns/story.php
+msgctxt "Pattern title"
+msgid "Roastery story"
+msgstr "Про обсмажувальню"
+
+#: patterns/story.php:18
+msgid "A handful of freshly roasted beans over the roaster tray"
+msgstr "Жменя свіжообсмаженого зерна над лотком ростера"
+
+#: patterns/story.php:26
+msgid "About the roastery"
+msgstr "Про обсмажувальню"
+
+#: patterns/story.php:30
+msgid "Small batches and a roast profile for every lot"
+msgstr "Невеликі партії й свій профіль обсмаження для кожного лоту"
+
+#: patterns/story.php:34
+msgid "We buy green coffee from importers who know the farms, cup every lot and look for the roast that brings out its own taste. A batch is 12 kg, so nothing sits on a shelf for months."
+msgstr "Купуємо зелену каву в імпортерів, які знають ферми, дегустуємо кожен лот і шукаємо обсмаження, що розкриває його власний смак. Партія — 12 кг, тож нічого не лежить на полиці місяцями."
+
+#: patterns/story.php:40
+msgid "coffees on the menu"
+msgstr "кав у меню"
+
+#: patterns/story.php:44
+msgid "roast day a week"
+msgstr "день обсмаження на тиждень"
+
+#: patterns/story.php:48
+msgid "cupping score of every lot"
+msgstr "балів кожного лоту за каппінгом"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Cream"
+msgstr "Вершки"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Sand"
+msgstr "Пісок"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr "Поверхня"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Espresso"
+msgstr "Еспресо"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Mocha"
+msgstr "Мока"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Roast"
+msgstr "Обсмаження"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark roast"
+msgstr "Темне обсмаження"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Line"
+msgstr "Лінія"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Leaf"
+msgstr "Листя"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Manrope"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Lora"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra small"
+msgstr "Дуже малий"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Малий"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Середній"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Великий"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra large"
+msgstr "Дуже великий"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Huge"
+msgstr "Величезний"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2X-Small"
+msgstr "2X-малий"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "X-Small"
+msgstr "X-малий"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr "Малий"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Medium"
+msgstr "Середній"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr "Великий"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "X-Large"
+msgstr "X-великий"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Soft"
+msgstr "М'яка"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Шапка"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Футер"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Checkout header"
+msgstr "Шапка оформлення"
+
+#: patterns/hero.php:18
+msgid "Specialty coffee from Kyiv"
+msgstr "Спешелті-кава з Києва"
+
+#: patterns/hero.php:22
+msgid "Coffee roasted this week"
+msgstr "Кава, обсмажена цього тижня"
+
+#: patterns/benefits.php:13
+msgid "Freshly roasted"
+msgstr "Свіже обсмаження"
+
+#: patterns/featured-products.php:16
+msgid "Popular this week"
+msgstr "Популярне цього тижня"

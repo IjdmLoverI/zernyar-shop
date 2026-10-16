@@ -7,7 +7,9 @@ parameters:
     - plugins/ua-commerce-kit/ua-commerce-kit.php
     - plugins/ua-commerce-kit/src
     - plugins/zernyar-demo
+    - themes/zernyar/functions.php
   scanFiles:
     - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+    - tools/wp-cli-stub.php
   bootstrapFiles:
     - tools/phpstan-constants.php
