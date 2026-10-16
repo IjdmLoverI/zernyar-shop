@@ -42,40 +42,42 @@ msgid "https://github.com/IjdmLoverI"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:37
-#: src/Admin/SettingsPage.php:94
+#: src/Admin/SettingsPage.php:147
 msgid "Modules"
 msgstr "Модулі"
 
-#: src/Admin/SettingsPage.php:95
+#: src/Admin/SettingsPage.php:148
 msgid "Switch off what this store does not use. Tools → Site Health checks that the services can be reached from this server."
 msgstr "Вимкніть те, чого магазин не використовує. Інструменти → Здоров'я сайту перевіряє, чи доступні сервіси з цього сервера."
 
 #: src/Admin/SettingsPage.php:38
-#: src/Admin/SettingsPage.php:52
-#: src/Admin/SettingsPage.php:100
+#: src/Admin/SettingsPage.php:105
+#: src/Admin/SettingsPage.php:153
 #: src/NovaPoshta/OrderDetails.php:86
 #: src/NovaPoshta/ShippingMethod.php:29
 msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
-#: src/Admin/SettingsPage.php:101
+#: src/Admin/SettingsPage.php:154
 msgid "Delivery to Nova Poshta branches and parcel lockers"
 msgstr "Доставка у відділення й поштомати Нової Пошти"
 
-#: src/Admin/SettingsPage.php:107
+#: src/Admin/SettingsPage.php:160
 #: src/WayForPay/Gateway.php:29
 msgid "WayForPay"
 msgstr "WayForPay"
 
-#: src/Admin/SettingsPage.php:108
+#: src/Admin/SettingsPage.php:161
 msgid "Card payments through WayForPay"
 msgstr "Оплата карткою через WayForPay"
 
-#: src/Admin/SettingsPage.php:114
+#: src/Admin/SettingsPage.php:39
+#: src/Admin/SettingsPage.php:53
+#: src/Admin/SettingsPage.php:167
 msgid "Telegram"
 msgstr "Telegram"
 
-#: src/Admin/SettingsPage.php:115
+#: src/Admin/SettingsPage.php:168
 msgid "Order notifications in Telegram"
 msgstr "Сповіщення про замовлення в Telegram"
 
@@ -135,35 +137,35 @@ msgstr "Telegram-бот недоступний"
 msgid "Order notifications are sent to Telegram from this server."
 msgstr "Сповіщення про замовлення надсилаються в Telegram з цього сервера."
 
-#: src/Plugin.php:70
+#: src/Plugin.php:74
 msgid "Settings"
 msgstr "Налаштування"
 
-#: src/Admin/SettingsPage.php:53
+#: src/Admin/SettingsPage.php:106
 msgid "Add the Nova Poshta method to a shipping zone in WooCommerce → Settings → Shipping; its cost is set there."
 msgstr "Додайте метод «Нова Пошта» до зони доставки в WooCommerce → Налаштування → Доставка; вартість задається там."
 
-#: src/Admin/SettingsPage.php:58
+#: src/Admin/SettingsPage.php:111
 msgid "API key"
 msgstr "Ключ API"
 
-#: src/Admin/SettingsPage.php:59
+#: src/Admin/SettingsPage.php:112
 msgid "From the Nova Poshta business account → Settings → Security. City and branch lookups and delivery prices work without it."
 msgstr "З бізнес-кабінету Нової Пошти → Налаштування → Безпека. Пошук міст і відділень та розрахунок вартості працюють і без нього."
 
-#: src/Admin/SettingsPage.php:66
+#: src/Admin/SettingsPage.php:119
 msgid "Sender city"
 msgstr "Місто відправника"
 
-#: src/Admin/SettingsPage.php:67
+#: src/Admin/SettingsPage.php:120
 msgid "Where parcels are sent from. Used to ask Nova Poshta for the delivery price."
 msgstr "Звідки відправляються посилки. Потрібне, щоб запитати в Нової Пошти вартість доставки."
 
-#: src/Admin/SettingsPage.php:73
+#: src/Admin/SettingsPage.php:126
 msgid "Address fields"
 msgstr "Поля адреси"
 
-#: src/Admin/SettingsPage.php:74
+#: src/Admin/SettingsPage.php:127
 msgid "Hide street, postcode and region for Ukraine: the picked branch replaces them"
 msgstr "Приховати для України вулицю, індекс і область: їх замінює обране відділення"
 
@@ -429,3 +431,99 @@ msgstr "WayForPay не провів оплату: %s."
 #: build/wayforpay.js:1
 msgid "Test mode: the payment page is real, but no money is taken. Do not enter a real card."
 msgstr "Тестовий режим: сторінка оплати справжня, але гроші не списуються. Не вводьте справжню картку."
+
+#: src/Admin/SettingsPage.php:54
+msgid "Create a bot with @BotFather, paste its token here, write anything to the bot and pick your chat below. The UACK_TELEGRAM_TOKEN and UACK_TELEGRAM_CHAT_ID constants win over these fields."
+msgstr "Створіть бота в @BotFather, вставте сюди його токен, напишіть боту будь-що й оберіть свій чат нижче. Константи UACK_TELEGRAM_TOKEN і UACK_TELEGRAM_CHAT_ID мають перевагу над цими полями."
+
+#: src/Admin/SettingsPage.php:59
+msgid "Bot token"
+msgstr "Токен бота"
+
+#: src/Admin/SettingsPage.php:65
+msgid "Chat ID"
+msgstr "ID чату"
+
+#: src/Admin/SettingsPage.php:66
+msgid "Your chat with the bot, or a group the bot is in."
+msgstr "Ваш чат із ботом або група, в якій є бот."
+
+#: src/Admin/SettingsPage.php:72
+msgid "Send"
+msgstr "Надсилати"
+
+#: src/Admin/SettingsPage.php:73
+msgid "New orders"
+msgstr "Нові замовлення"
+
+#: src/Admin/SettingsPage.php:80
+msgid "Online payments"
+msgstr "Онлайн-оплати"
+
+#. translators: %s: order number.
+#: src/Telegram/Message.php:46
+#, php-format
+msgid "Order #%s is paid"
+msgstr "Замовлення №%s оплачено"
+
+#. translators: %s: order number.
+#: src/Telegram/Message.php:48
+#, php-format
+msgid "New order #%s"
+msgstr "Нове замовлення №%s"
+
+#: src/Telegram/Message.php:62
+msgid "Open the order"
+msgstr "Відкрити замовлення"
+
+#: src/Telegram/Module.php:36
+msgid "Check"
+msgstr "Перевірка"
+
+#: src/Telegram/Module.php:38
+msgid "Save a bot token to send a test message."
+msgstr "Збережіть токен бота, щоб надіслати тестове повідомлення."
+
+#: src/Telegram/Module.php:42
+msgid "Send a test message"
+msgstr "Надіслати тестове повідомлення"
+
+#: src/Telegram/Module.php:48
+msgid "Chats that wrote to the bot lately; copy the ID into the field above:"
+msgstr "Чати, які нещодавно писали боту; скопіюйте ID у поле вище:"
+
+#: src/Telegram/Module.php:55
+msgid "Write anything to the bot in Telegram and reload this page to see your chat ID."
+msgstr "Напишіть боту будь-що в Telegram і перезавантажте сторінку, щоб побачити ID свого чату."
+
+#: src/Telegram/Module.php:67
+msgid "You are not allowed to do this."
+msgstr "У вас немає на це прав."
+
+#: src/Telegram/Module.php:73
+msgid "Set the bot token and the chat ID first."
+msgstr "Спершу вкажіть токен бота й ID чату."
+
+#: src/Telegram/Module.php:74
+msgid "Test message from the store. Order notifications will come here."
+msgstr "Тестове повідомлення від магазину. Сюди надходитимуть сповіщення про замовлення."
+
+#: src/Telegram/Module.php:93
+msgid "The test message is sent. Check the chat."
+msgstr "Тестове повідомлення надіслано. Перевірте чат."
+
+#. translators: %s: error from Telegram.
+#: src/Telegram/Module.php:97
+#, php-format
+msgid "Telegram did not take the message: %s"
+msgstr "Telegram не прийняв повідомлення: %s"
+
+#. translators: %s: error from Telegram.
+#: src/Telegram/Notifier.php:88
+#, php-format
+msgid "Telegram notification was not sent: %s"
+msgstr "Сповіщення в Telegram не надіслано: %s"
+
+#: src/Telegram/Notifier.php:120
+msgid "waiting for payment"
+msgstr "очікує оплату"

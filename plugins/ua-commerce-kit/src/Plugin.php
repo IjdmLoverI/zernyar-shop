@@ -10,6 +10,7 @@ namespace UaCommerceKit;
 use UaCommerceKit\Admin\SettingsPage;
 use UaCommerceKit\Health\SiteHealth;
 use UaCommerceKit\NovaPoshta\Module as NovaPoshta;
+use UaCommerceKit\Telegram\Module as Telegram;
 use UaCommerceKit\WayForPay\Module as WayForPay;
 
 defined( 'ABSPATH' ) || exit;
@@ -38,6 +39,9 @@ final class Plugin {
 		}
 		if ( self::module_enabled( 'wayforpay' ) ) {
 			WayForPay::register();
+		}
+		if ( self::module_enabled( 'telegram' ) ) {
+			Telegram::register();
 		}
 	}
 

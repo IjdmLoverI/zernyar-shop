@@ -36,6 +36,59 @@ final class SettingsPage extends WC_Settings_Page {
 		return array(
 			''            => __( 'Modules', 'ua-commerce-kit' ),
 			'nova_poshta' => __( 'Nova Poshta', 'ua-commerce-kit' ),
+			'telegram'    => __( 'Telegram', 'ua-commerce-kit' ),
+		);
+	}
+
+	/**
+	 * Fields of the Telegram section.
+	 *
+	 * @return array<int, array<string, mixed>>
+	 */
+	protected function get_settings_for_telegram_section() {
+		return array(
+			array(
+				'id'    => 'uack_telegram',
+				'type'  => 'title',
+				'title' => __( 'Telegram', 'ua-commerce-kit' ),
+				'desc'  => __( 'Create a bot with @BotFather, paste its token here, write anything to the bot and pick your chat below. The UACK_TELEGRAM_TOKEN and UACK_TELEGRAM_CHAT_ID constants win over these fields.', 'ua-commerce-kit' ),
+			),
+			array(
+				'id'      => 'uack_telegram_token',
+				'type'    => 'password',
+				'title'   => __( 'Bot token', 'ua-commerce-kit' ),
+				'default' => '',
+			),
+			array(
+				'id'      => 'uack_telegram_chat_id',
+				'type'    => 'text',
+				'title'   => __( 'Chat ID', 'ua-commerce-kit' ),
+				'desc'    => __( 'Your chat with the bot, or a group the bot is in.', 'ua-commerce-kit' ),
+				'default' => '',
+			),
+			array(
+				'id'            => 'uack_telegram_new',
+				'type'          => 'checkbox',
+				'title'         => __( 'Send', 'ua-commerce-kit' ),
+				'desc'          => __( 'New orders', 'ua-commerce-kit' ),
+				'default'       => 'yes',
+				'checkboxgroup' => 'start',
+			),
+			array(
+				'id'            => 'uack_telegram_paid',
+				'type'          => 'checkbox',
+				'desc'          => __( 'Online payments', 'ua-commerce-kit' ),
+				'default'       => 'yes',
+				'checkboxgroup' => 'end',
+			),
+			array(
+				'id'   => 'uack_telegram_tools',
+				'type' => 'uack_telegram_tools',
+			),
+			array(
+				'id'   => 'uack_telegram',
+				'type' => 'sectionend',
+			),
 		);
 	}
 
