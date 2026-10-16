@@ -1,0 +1,40 @@
+{
+	"name": "ijdmloveri/zernyar-shop",
+	"description": "Development tools for the Zernyar WooCommerce store.",
+	"type": "project",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.1"
+	},
+	"require-dev": {
+		"brain/monkey": "^2.7",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.2",
+		"php-stubs/woocommerce-stubs": "^11.2",
+		"php-stubs/wordpress-stubs": "^7.1",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpstan/phpstan": "^2.3",
+		"phpunit/phpunit": "^12.0",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"wp-coding-standards/wpcs": "^3.4"
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"UaCommerceKit\\": "plugins/ua-commerce-kit/src/",
+			"UaCommerceKit\\Tests\\": "plugins/ua-commerce-kit/tests/unit/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"platform": {
+			"php": "8.3"
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"lint": "phpcs",
+		"analyse": "phpstan analyse --memory-limit=1G",
+		"test": "phpunit"
+	}
+}

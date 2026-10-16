@@ -1,0 +1,13 @@
+includes:
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+  level: 8
+  paths:
+    - plugins/ua-commerce-kit/ua-commerce-kit.php
+    - plugins/ua-commerce-kit/src
+    - plugins/zernyar-demo
+  scanFiles:
+    - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+  bootstrapFiles:
+    - tools/phpstan-constants.php
