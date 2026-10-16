@@ -51,7 +51,10 @@ wp option update woocommerce_show_marketplace_suggestions no
 wp option update woocommerce_onboarding_profile '{"skipped":true}' --format=json || true
 
 wp theme activate zernyar
-wp plugin activate translatepress-multilingual ua-commerce-kit zernyar-demo
+wp plugin activate ua-commerce-kit zernyar-demo
+# TranslatePress redirects to its onboarding and exits on activation, ending the command there.
+wp plugin activate translatepress-multilingual
+wp plugin is-active translatepress-multilingual
 
 wp plugin delete hello akismet 2>/dev/null || true
 wp theme delete twentytwentythree twentytwentyfour 2>/dev/null || true
