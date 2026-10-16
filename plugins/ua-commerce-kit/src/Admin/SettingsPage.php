@@ -28,6 +28,60 @@ final class SettingsPage extends WC_Settings_Page {
 	}
 
 	/**
+	 * Sections of the tab.
+	 *
+	 * @return array<string, string>
+	 */
+	protected function get_own_sections() {
+		return array(
+			''            => __( 'Modules', 'ua-commerce-kit' ),
+			'nova_poshta' => __( 'Nova Poshta', 'ua-commerce-kit' ),
+		);
+	}
+
+	/**
+	 * Fields of the Nova Poshta section.
+	 *
+	 * @return array<int, array<string, mixed>>
+	 */
+	protected function get_settings_for_nova_poshta_section() {
+		return array(
+			array(
+				'id'    => 'uack_np',
+				'type'  => 'title',
+				'title' => __( 'Nova Poshta', 'ua-commerce-kit' ),
+				'desc'  => __( 'Add the Nova Poshta method to a shipping zone in WooCommerce → Settings → Shipping; its cost is set there.', 'ua-commerce-kit' ),
+			),
+			array(
+				'id'       => 'uack_np_api_key',
+				'type'     => 'password',
+				'title'    => __( 'API key', 'ua-commerce-kit' ),
+				'desc'     => __( 'From the Nova Poshta business account → Settings → Security. City and branch lookups and delivery prices work without it.', 'ua-commerce-kit' ),
+				'desc_tip' => false,
+				'default'  => '',
+			),
+			array(
+				'id'      => 'uack_np_sender_city',
+				'type'    => 'text',
+				'title'   => __( 'Sender city', 'ua-commerce-kit' ),
+				'desc'    => __( 'Where parcels are sent from. Used to ask Nova Poshta for the delivery price.', 'ua-commerce-kit' ),
+				'default' => 'Київ',
+			),
+			array(
+				'id'      => 'uack_np_hide_address',
+				'type'    => 'checkbox',
+				'title'   => __( 'Address fields', 'ua-commerce-kit' ),
+				'desc'    => __( 'Hide street, postcode and region for Ukraine: the picked branch replaces them', 'ua-commerce-kit' ),
+				'default' => 'yes',
+			),
+			array(
+				'id'   => 'uack_np',
+				'type' => 'sectionend',
+			),
+		);
+	}
+
+	/**
 	 * Fields of the main section.
 	 *
 	 * @return array<int, array<string, mixed>>

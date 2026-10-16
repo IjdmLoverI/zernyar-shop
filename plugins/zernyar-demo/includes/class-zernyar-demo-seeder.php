@@ -14,7 +14,8 @@ defined( 'ABSPATH' ) || exit;
 final class Zernyar_Demo_Seeder {
 
 	private const STATE_OPTION = 'zernyar_demo_seed_state';
-	private const STEPS        = array( 'settings', 'attributes', 'categories', 'pages', 'products', 'menu' );
+	private const STEPS        = array( 'settings', 'shipping', 'attributes', 'categories', 'pages', 'products', 'menu' );
+	private const NOVA_POSHTA  = 'uack_nova_poshta';
 	private const GRAMS        = array(
 		'250g' => '0.27',
 		'1kg'  => '1.05',
@@ -129,6 +130,49 @@ final class Zernyar_Demo_Seeder {
 				'enable_for_virtual' => 'yes',
 			)
 		);
+		return true;
+	}
+
+	/**
+	 * Shipping zone for Ukraine with Nova Poshta, and a required phone at checkout.
+	 */
+	private function step_shipping(): bool {
+		update_option( 'woocommerce_checkout_phone_field', 'required' );
+		update_option( 'uack_np_sender_city', 'Київ' );
+
+		$zone = null;
+		foreach ( WC_Shipping_Zones::get_zones() as $data ) {
+			if ( 'Україна' === $data['zone_name'] ) {
+				$zone = new WC_Shipping_Zone( (int) $data['id'] );
+			}
+		}
+		if ( null === $zone ) {
+			$zone = new WC_Shipping_Zone();
+			$zone->set_zone_name( 'Україна' );
+			$zone->add_location( 'UA', 'country' );
+			$zone->save();
+		}
+
+		$instance = 0;
+		foreach ( $zone->get_shipping_methods() as $method ) {
+			if ( self::NOVA_POSHTA === $method->id ) {
+				$instance = (int) $method->instance_id;
+			}
+		}
+		if ( ! $instance && array_key_exists( self::NOVA_POSHTA, WC()->shipping()->get_shipping_method_class_names() ) ) {
+			$instance = $zone->add_shipping_method( self::NOVA_POSHTA );
+		}
+		if ( $instance ) {
+			update_option(
+				'woocommerce_' . self::NOVA_POSHTA . '_' . $instance . '_settings',
+				array(
+					'title'     => 'Нова Пошта: відділення, поштомат або пункт',
+					'cost_mode' => 'carrier',
+					'cost'      => '80',
+					'free_from' => '1500',
+				)
+			);
+		}
 		return true;
 	}
 

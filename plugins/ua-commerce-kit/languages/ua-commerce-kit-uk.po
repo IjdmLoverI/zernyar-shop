@@ -41,35 +41,40 @@ msgstr "Кирило Бучинський"
 msgid "https://github.com/IjdmLoverI"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:40
+#: src/Admin/SettingsPage.php:37
+#: src/Admin/SettingsPage.php:94
 msgid "Modules"
 msgstr "Модулі"
 
-#: src/Admin/SettingsPage.php:41
+#: src/Admin/SettingsPage.php:95
 msgid "Switch off what this store does not use. Tools → Site Health checks that the services can be reached from this server."
 msgstr "Вимкніть те, чого магазин не використовує. Інструменти → Здоров'я сайту перевіряє, чи доступні сервіси з цього сервера."
 
-#: src/Admin/SettingsPage.php:46
+#: src/Admin/SettingsPage.php:38
+#: src/Admin/SettingsPage.php:52
+#: src/Admin/SettingsPage.php:100
+#: src/NovaPoshta/OrderDetails.php:86
+#: src/NovaPoshta/ShippingMethod.php:29
 msgid "Nova Poshta"
 msgstr "Нова Пошта"
 
-#: src/Admin/SettingsPage.php:47
+#: src/Admin/SettingsPage.php:101
 msgid "Delivery to Nova Poshta branches and parcel lockers"
 msgstr "Доставка у відділення й поштомати Нової Пошти"
 
-#: src/Admin/SettingsPage.php:53
+#: src/Admin/SettingsPage.php:107
 msgid "WayForPay"
 msgstr "WayForPay"
 
-#: src/Admin/SettingsPage.php:54
+#: src/Admin/SettingsPage.php:108
 msgid "Card payments through WayForPay"
 msgstr "Оплата карткою через WayForPay"
 
-#: src/Admin/SettingsPage.php:60
+#: src/Admin/SettingsPage.php:114
 msgid "Telegram"
 msgstr "Telegram"
 
-#: src/Admin/SettingsPage.php:61
+#: src/Admin/SettingsPage.php:115
 msgid "Order notifications in Telegram"
 msgstr "Сповіщення про замовлення в Telegram"
 
@@ -129,6 +134,157 @@ msgstr "Telegram-бот недоступний"
 msgid "Order notifications are sent to Telegram from this server."
 msgstr "Сповіщення про замовлення надсилаються в Telegram з цього сервера."
 
-#: src/Plugin.php:61
+#: src/Plugin.php:66
 msgid "Settings"
 msgstr "Налаштування"
+
+#: src/Admin/SettingsPage.php:53
+msgid "Add the Nova Poshta method to a shipping zone in WooCommerce → Settings → Shipping; its cost is set there."
+msgstr "Додайте метод «Нова Пошта» до зони доставки в WooCommerce → Налаштування → Доставка; вартість задається там."
+
+#: src/Admin/SettingsPage.php:58
+msgid "API key"
+msgstr "Ключ API"
+
+#: src/Admin/SettingsPage.php:59
+msgid "From the Nova Poshta business account → Settings → Security. City and branch lookups and delivery prices work without it."
+msgstr "З бізнес-кабінету Нової Пошти → Налаштування → Безпека. Пошук міст і відділень та розрахунок вартості працюють і без нього."
+
+#: src/Admin/SettingsPage.php:66
+msgid "Sender city"
+msgstr "Місто відправника"
+
+#: src/Admin/SettingsPage.php:67
+msgid "Where parcels are sent from. Used to ask Nova Poshta for the delivery price."
+msgstr "Звідки відправляються посилки. Потрібне, щоб запитати в Нової Пошти вартість доставки."
+
+#: src/Admin/SettingsPage.php:73
+msgid "Address fields"
+msgstr "Поля адреси"
+
+#: src/Admin/SettingsPage.php:74
+msgid "Hide street, postcode and region for Ukraine: the picked branch replaces them"
+msgstr "Приховати для України вулицю, індекс і область: їх замінює обране відділення"
+
+#: src/NovaPoshta/Checkout.php:85
+msgid "This branch is in another city."
+msgstr "Це відділення в іншому місті."
+
+#: src/NovaPoshta/Checkout.php:121
+msgid "Choose a Nova Poshta branch or parcel locker for delivery."
+msgstr "Оберіть відділення або поштомат Нової Пошти для доставки."
+
+#: src/NovaPoshta/Checkout.php:126
+msgid "The picked branch is in another city. Choose the branch again."
+msgstr "Обране відділення в іншому місті. Оберіть відділення ще раз."
+
+#: src/NovaPoshta/Checkout.php:133
+msgid "Enter a Ukrainian mobile number, for example +380 67 123 45 67. Nova Poshta sends the parcel code to it."
+msgstr "Введіть український мобільний номер, наприклад +380 67 123 45 67. На нього Нова Пошта надішле код посилки."
+
+#: src/NovaPoshta/OrderDetails.php:68
+#: build/checkout.js:1
+msgid "Parcel locker"
+msgstr "Поштомат"
+
+#: src/NovaPoshta/OrderDetails.php:69
+#: build/checkout.js:1
+msgid "Pickup point"
+msgstr "Пункт"
+
+#: src/NovaPoshta/OrderDetails.php:70
+#: build/checkout.js:1
+msgid "Branch"
+msgstr "Відділення"
+
+#: src/NovaPoshta/OrderDetails.php:91
+msgid "Branch reference for the waybill:"
+msgstr "Ідентифікатор відділення для накладної:"
+
+#: src/NovaPoshta/Rest.php:120
+msgid "Too many searches. Try again in a few minutes."
+msgstr "Забагато пошукових запитів. Спробуйте за кілька хвилин."
+
+#: src/NovaPoshta/Rest.php:130
+msgid "Nova Poshta does not answer right now. Try again in a minute."
+msgstr "Нова Пошта зараз не відповідає. Спробуйте за хвилину."
+
+#: src/NovaPoshta/ShippingMethod.php:30
+msgid "Delivery to a Nova Poshta branch, parcel locker or pickup point that the shopper picks at checkout."
+msgstr "Доставка у відділення, поштомат або пункт Нової Пошти, який покупець обирає під час оформлення."
+
+#: src/NovaPoshta/ShippingMethod.php:41
+msgid "Title"
+msgstr "Назва"
+
+#: src/NovaPoshta/ShippingMethod.php:43
+#: src/NovaPoshta/ShippingMethod.php:69
+msgid "Nova Poshta: branch or parcel locker"
+msgstr "Нова Пошта: відділення або поштомат"
+
+#: src/NovaPoshta/ShippingMethod.php:46
+msgid "Cost"
+msgstr "Вартість"
+
+#: src/NovaPoshta/ShippingMethod.php:50
+msgid "Nova Poshta tariff for the picked city"
+msgstr "Тариф Нової Пошти до обраного міста"
+
+#: src/NovaPoshta/ShippingMethod.php:51
+#: src/NovaPoshta/ShippingMethod.php:55
+msgid "Fixed cost"
+msgstr "Фіксована вартість"
+
+#: src/NovaPoshta/ShippingMethod.php:58
+msgid "Also used with the tariff until the shopper picks a city or when Nova Poshta does not answer."
+msgstr "Діє і з тарифом, поки покупець не обрав місто або коли Нова Пошта не відповідає."
+
+#: src/NovaPoshta/ShippingMethod.php:62
+msgid "Free from"
+msgstr "Безкоштовно від"
+
+#: src/NovaPoshta/ShippingMethod.php:65
+msgid "Order total from which delivery is free. Leave empty to always charge."
+msgstr "Сума замовлення, від якої доставка безкоштовна. Залиште порожнім, щоб завжди брати оплату."
+
+#: build/checkout.js:1
+msgid "Searching…"
+msgstr "Шукаємо…"
+
+#: build/checkout.js:1
+msgid "Nothing found"
+msgstr "Нічого не знайдено"
+
+#: build/checkout.js:1
+msgid "Nova Poshta does not answer. Try again in a minute."
+msgstr "Нова Пошта не відповідає. Спробуйте за хвилину."
+
+#: build/checkout.js:1
+msgid "Type at least two letters"
+msgstr "Введіть щонайменше дві літери"
+
+#: build/checkout.js:1
+msgid "Choose a Nova Poshta branch or parcel locker."
+msgstr "Оберіть відділення або поштомат Нової Пошти."
+
+#: build/checkout.js:1
+msgid "Where to deliver"
+msgstr "Куди доставити"
+
+#: build/checkout.js:1
+msgid "City"
+msgstr "Місто"
+
+#: build/checkout.js:1
+msgid "Branch or parcel locker"
+msgstr "Відділення або поштомат"
+
+#. translators: 1: Branch, Parcel locker or Pickup point. 2: number.
+#: build/checkout.js:2
+#, js-format
+msgid "%1$s №%2$s"
+msgstr "%1$s №%2$s"
+
+#: build/checkout.js:2
+msgid "Start typing the city, then pick a branch, a parcel locker or a pickup point."
+msgstr "Почніть вводити місто, потім оберіть відділення, поштомат або пункт."

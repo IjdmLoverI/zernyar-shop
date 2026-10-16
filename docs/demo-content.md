@@ -14,6 +14,8 @@
 - **Pages:** About, Delivery and payment, Contacts and Terms; the WooCommerce pages get Ukrainian
   titles.
 - **Menu:** one navigation menu, used in the header and the footer.
+- **Shipping:** a zone for Ukraine with the Nova Poshta method (tariff, 80 ₴ until a city is
+  picked, free from 1500 ₴), Kyiv as the sender city, and a required phone at checkout.
 - **Settings:** store title and city, cash on delivery, weight units, and
   `woocommerce_attribute_lookup_direct_updates`, so the filters see new products at once instead
   of waiting for a background job that free hosting may never run.
