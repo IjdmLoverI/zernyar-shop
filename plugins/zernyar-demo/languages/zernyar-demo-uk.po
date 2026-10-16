@@ -1,0 +1,89 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zernyar Demo 0.2.0\n"
+"Report-Msgid-Bugs-To: https://github.com/IjdmLoverI/zernyar-shop/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-16T08:15:46+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: uk\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: zernyar-demo\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Plugin Name of the plugin
+#: zernyar-demo.php
+msgid "Zernyar Demo"
+msgstr "Демо «Зерняр»"
+
+#. Plugin URI of the plugin
+#: zernyar-demo.php
+msgid "https://github.com/IjdmLoverI/zernyar-shop"
+msgstr ""
+
+#. Description of the plugin
+#: zernyar-demo.php
+msgid "Demo content for the Zernyar coffee store and settings for free hosting."
+msgstr "Демо-контент для кавового магазину «Зерняр» і налаштування для безкоштовного хостингу."
+
+#. Author of the plugin
+#: zernyar-demo.php
+msgid "Kyrylo Buchynskyi"
+msgstr "Кирило Бучинський"
+
+#: includes/class-zernyar-demo-admin-page.php:38
+#: includes/class-zernyar-demo-admin-page.php:39
+#: includes/class-zernyar-demo-admin-page.php:89
+msgid "Zernyar demo"
+msgstr "Демо «Зерняр»"
+
+#: includes/class-zernyar-demo-admin-page.php:66
+msgid "You are not allowed to import the demo content."
+msgstr "Вам не дозволено імпортувати демо-контент."
+
+#: includes/class-zernyar-demo-admin-page.php:92
+msgid "The demo content is imported."
+msgstr "Демо-контент імпортовано."
+
+#: includes/class-zernyar-demo-admin-page.php:95
+msgid "Demo content"
+msgstr "Демо-контент"
+
+#. translators: %d: number of products.
+#: includes/class-zernyar-demo-admin-page.php:100
+#, php-format
+msgid "Imports %d products with images, the attributes and categories, the About, Delivery, Contacts and Terms pages and the menu. Existing demo items are updated, nothing is duplicated."
+msgstr "Імпортує %d товарів із зображеннями, атрибути й категорії, сторінки «Про нас», «Доставка й оплата», «Контакти», «Умови» та меню. Наявні демо-елементи оновлюються, нічого не дублюється."
+
+#. translators: 1: import step, 2: product number.
+#: includes/class-zernyar-demo-admin-page.php:113
+#, php-format
+msgid "Importing: %1$s, item %2$d. The next part starts by itself."
+msgstr "Імпорт: %1$s, елемент %2$d. Наступна частина запуститься сама."
+
+#: includes/class-zernyar-demo-admin-page.php:119
+msgid "Continue the import"
+msgstr "Продовжити імпорт"
+
+#: includes/class-zernyar-demo-admin-page.php:122
+msgid "Import demo content"
+msgstr "Імпортувати демо-контент"
+
+#: includes/class-zernyar-demo-admin-page.php:128
+msgid "Hosting"
+msgstr "Хостинг"
+
+#: includes/class-zernyar-demo-admin-page.php:131
+msgid "Scheduled tasks"
+msgstr "Заплановані завдання"
+
+#: includes/class-zernyar-demo-admin-page.php:135
+msgid "Run scheduled tasks during page visits"
+msgstr "Виконувати заплановані завдання під час відвідувань"
+
+#: includes/class-zernyar-demo-admin-page.php:138
+msgid "Turn this on when the host blocks requests from the site to itself, as InfinityFree does. WordPress then runs due tasks through a short redirect of the visitor's browser."
+msgstr "Увімкніть, якщо хостинг блокує запити сайту до самого себе, як InfinityFree. Тоді WordPress виконує завдання через коротке перенаправлення браузера відвідувача."

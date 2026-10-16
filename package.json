@@ -1,0 +1,16 @@
+{
+	"name": "zernyar-shop",
+	"private": true,
+	"description": "Build and test tools for the Zernyar WooCommerce store.",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"scripts": {
+		"render:packs": "node scripts/render-packs.mjs"
+	},
+	"devDependencies": {
+		"@playwright/test": "1.64.0"
+	},
+	"engines": {
+		"node": ">=20"
+	}
+}
