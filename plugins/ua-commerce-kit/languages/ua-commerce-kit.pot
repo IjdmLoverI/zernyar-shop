@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: UA Commerce Kit 0.1.0\n"
+"Project-Id-Version: UA Commerce Kit 0.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/IjdmLoverI/zernyar-shop/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-16T09:02:06+00:00\n"
+"POT-Creation-Date: 2026-10-16T10:02:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ua-commerce-kit\n"
@@ -91,6 +91,7 @@ msgid "Delivery to Nova Poshta branches and parcel lockers"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:107
+#: src/WayForPay/Gateway.php:29
 msgid "WayForPay"
 msgstr ""
 
@@ -197,11 +198,11 @@ msgstr ""
 msgid "Branch reference for the waybill:"
 msgstr ""
 
-#: src/NovaPoshta/Rest.php:120
+#: src/NovaPoshta/Rest.php:122
 msgid "Too many searches. Try again in a few minutes."
 msgstr ""
 
-#: src/NovaPoshta/Rest.php:130
+#: src/NovaPoshta/Rest.php:132
 msgid "Nova Poshta does not answer right now. Try again in a minute."
 msgstr ""
 
@@ -210,6 +211,7 @@ msgid "Delivery to a Nova Poshta branch, parcel locker or pickup point that the 
 msgstr ""
 
 #: src/NovaPoshta/ShippingMethod.php:41
+#: src/WayForPay/Gateway.php:59
 msgid "Title"
 msgstr ""
 
@@ -243,8 +245,143 @@ msgstr ""
 msgid "Order total from which delivery is free. Leave empty to always charge."
 msgstr ""
 
-#: src/Plugin.php:66
+#: src/Plugin.php:70
 msgid "Settings"
+msgstr ""
+
+#: src/WayForPay/Endpoints.php:104
+msgid "return from the payment page"
+msgstr ""
+
+#: src/WayForPay/Endpoints.php:107
+msgid "The payment did not go through. You can try again or choose another payment method."
+msgstr ""
+
+#: src/WayForPay/Endpoints.php:127
+msgid "WayForPay callback"
+msgstr ""
+
+#: src/WayForPay/Endpoints.php:148
+msgid "thank-you page"
+msgstr ""
+
+#: src/WayForPay/Endpoints.php:243
+msgid "Payment"
+msgstr ""
+
+#: src/WayForPay/Endpoints.php:246
+msgid "Taking you to the WayForPay payment page…"
+msgstr ""
+
+#: src/WayForPay/Endpoints.php:247
+msgid "Go to payment"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:30
+msgid "Card, Apple Pay and Google Pay on the WayForPay payment page. Test mode uses the public test merchant from the WayForPay docs, so nothing is charged."
+msgstr ""
+
+#: src/WayForPay/Gateway.php:53
+msgid "Enable"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:55
+msgid "Accept payments through WayForPay"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:61
+#: build/wayforpay.js:1
+msgid "Card online"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:64
+msgid "Description"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:66
+msgid "Visa, Mastercard, Apple Pay or Google Pay on the secure WayForPay page."
+msgstr ""
+
+#: src/WayForPay/Gateway.php:69
+msgid "Test mode"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:71
+msgid "Use the public test merchant; nothing is charged"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:73
+msgid "Turn this off and fill in the merchant account and secret key from the WayForPay merchant account to take real payments."
+msgstr ""
+
+#: src/WayForPay/Gateway.php:76
+msgid "Merchant account"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:81
+msgid "Secret key"
+msgstr ""
+
+#: src/WayForPay/Gateway.php:84
+msgid "Or define UACK_WFP_ACCOUNT and UACK_WFP_SECRET in wp-config.php."
+msgstr ""
+
+#: src/WayForPay/Gateway.php:130
+msgid "Nothing to refund."
+msgstr ""
+
+#. translators: %s: reason from WayForPay.
+#: src/WayForPay/Gateway.php:136
+#, php-format
+msgid "WayForPay refused the refund: %s"
+msgstr ""
+
+#. translators: 1: amount, 2: status from WayForPay.
+#: src/WayForPay/Gateway.php:141
+#, php-format
+msgid "WayForPay refunded %1$s (%2$s)."
+msgstr ""
+
+#: src/WayForPay/OrderScreens.php:44
+msgid "The payment did not go through. You can pay again from your account or contact us."
+msgstr ""
+
+#: src/WayForPay/OrderScreens.php:45
+msgid "Waiting for WayForPay to confirm the payment. The page updates by itself."
+msgstr ""
+
+#: src/WayForPay/OrderScreens.php:66
+msgid "Check the WayForPay payment"
+msgstr ""
+
+#: src/WayForPay/OrderScreens.php:77
+msgid "manual check"
+msgstr ""
+
+#: src/WayForPay/OrderScreens.php:79
+msgid "WayForPay has no payment for this order yet, or does not answer."
+msgstr ""
+
+#. translators: 1: amount, 2: currency.
+#: src/WayForPay/Payments.php:89
+#, php-format
+msgid "WayForPay reports a payment of %1$s %2$s, which does not match the order. Check it in the merchant account."
+msgstr ""
+
+#. translators: 1: where the result came from, 2: masked card number, 3: bank authorization code.
+#: src/WayForPay/Payments.php:99
+#, php-format
+msgid "WayForPay approved the payment (%1$s): card %2$s, authorization code %3$s."
+msgstr ""
+
+#: src/WayForPay/Payments.php:110
+msgid "WayForPay is still processing the payment."
+msgstr ""
+
+#. translators: %s: reason from WayForPay.
+#: src/WayForPay/Payments.php:117
+#, php-format
+msgid "WayForPay did not take the payment: %s."
 msgstr ""
 
 #: build/checkout.js:1
@@ -287,4 +424,8 @@ msgstr ""
 
 #: build/checkout.js:2
 msgid "Start typing the city, then pick a branch, a parcel locker or a pickup point."
+msgstr ""
+
+#: build/wayforpay.js:1
+msgid "Test mode: the payment page is real, but no money is taken. Do not enter a real card."
 msgstr ""

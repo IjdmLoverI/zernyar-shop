@@ -34,4 +34,26 @@ final class Credentials {
 	public static function test(): self {
 		return new self( self::TEST_ACCOUNT, self::TEST_SECRET );
 	}
+
+	/**
+	 * Credentials from the gateway settings. Constants UACK_WFP_ACCOUNT and
+	 * UACK_WFP_SECRET win; test mode or a missing secret uses the test merchant.
+	 *
+	 * @param array<string, mixed> $settings Gateway settings.
+	 */
+	public static function from_settings( array $settings ): self {
+		if ( 'no' !== ( $settings['test_mode'] ?? 'yes' ) ) {
+			return self::test();
+		}
+		$account = defined( 'UACK_WFP_ACCOUNT' ) && is_string( UACK_WFP_ACCOUNT ) ? UACK_WFP_ACCOUNT : trim( (string) ( $settings['merchant_account'] ?? '' ) );
+		$secret  = defined( 'UACK_WFP_SECRET' ) && is_string( UACK_WFP_SECRET ) ? UACK_WFP_SECRET : trim( (string) ( $settings['secret_key'] ?? '' ) );
+		return '' === $account || '' === $secret ? self::test() : new self( $account, $secret );
+	}
+
+	/**
+	 * Whether these are the public test credentials.
+	 */
+	public function is_test(): bool {
+		return self::TEST_ACCOUNT === $this->account;
+	}
 }

@@ -11,7 +11,7 @@ use UaCommerceKit\Http;
 use UaCommerceKit\NovaPoshta\Client as NovaPoshtaClient;
 use UaCommerceKit\Plugin;
 use UaCommerceKit\Telegram\Config as TelegramConfig;
-use UaCommerceKit\WayForPay\Credentials;
+use UaCommerceKit\WayForPay\Gateway;
 use UaCommerceKit\WayForPay\Signature;
 
 defined( 'ABSPATH' ) || exit;
@@ -86,7 +86,7 @@ final class SiteHealth {
 	 * @return array<string, mixed>
 	 */
 	public function test_wayforpay(): array {
-		$credentials = Credentials::test();
+		$credentials = Gateway::credentials();
 		$reference   = 'health-' . time();
 		$result      = Http::post_json(
 			'https://api.wayforpay.com/api',
