@@ -22,6 +22,29 @@
   `woocommerce_attribute_lookup_direct_updates`, so the filters see new products at once instead
   of waiting for a background job that free hosting may never run.
 
+## English version
+
+The store is Ukrainian; TranslatePress adds English under `/en/`. The import switches it on: Ukrainian
+as the default language without a prefix, English as the second one, and no floating switcher,
+because the theme has its own **UA / EN** links in the header (`blocks/language-switcher`).
+
+Three kinds of text, three ways:
+
+- **Theme and plugin texts** are English in the code and Ukrainian in the `.po` files.
+  TranslatePress switches the locale on `/en/`, so they need no work.
+- **Demo content in the database** (products, categories, attributes, pages, menu, payment and
+  shipping titles) is translated in `data/translations-en.json`. The import writes it into the
+  TranslatePress dictionary as reviewed translations. The keys are the texts as TranslatePress
+  stores them, entities included (`&#8217;`, the breadcrumb `&#47;&nbsp;`), because it matches
+  text nodes of the page.
+- **Texts that never reach the page as text.** The product filters rebuild their labels from JSON,
+  and the Checkout block joins attribute names and values into one line. On `/en/`,
+  `Zernyar_Demo_English` swaps those names through WooCommerce filters (`get_term`,
+  `woocommerce_attribute_label`, variation names, gateway and shipping titles), using the same
+  file.
+
+Nova Poshta city and branch names stay Ukrainian: the API has no English names.
+
 ## Running it
 
 ```bash

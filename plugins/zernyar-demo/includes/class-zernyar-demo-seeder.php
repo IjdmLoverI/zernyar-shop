@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 final class Zernyar_Demo_Seeder {
 
 	private const STATE_OPTION = 'zernyar_demo_seed_state';
-	private const STEPS        = array( 'settings', 'shipping', 'attributes', 'categories', 'pages', 'products', 'menu' );
+	private const STEPS        = array( 'settings', 'shipping', 'attributes', 'categories', 'pages', 'products', 'menu', 'languages' );
 	private const NOVA_POSHTA  = 'uack_nova_poshta';
 	private const GRAMS        = array(
 		'250g' => '0.27',
@@ -344,6 +344,68 @@ final class Zernyar_Demo_Seeder {
 			),
 			true
 		);
+		return true;
+	}
+
+	/**
+	 * English version through TranslatePress: the languages, and the translations
+	 * of the demo content from data/translations-en.json.
+	 *
+	 * The theme and plugin texts are translated by their .mo files; TranslatePress
+	 * only needs the texts stored in the database.
+	 */
+	private function step_languages(): bool {
+		if ( ! class_exists( 'TRP_Translate_Press' ) ) {
+			return true;
+		}
+		$trp      = TRP_Translate_Press::get_trp_instance();
+		$settings = get_option( 'trp_settings', array() );
+		$settings = array_merge(
+			is_array( $settings ) ? $settings : array(),
+			array(
+				'default-language'                     => 'uk',
+				'translation-languages'                => array( 'uk', 'en_US' ),
+				'publish-languages'                    => array( 'uk', 'en_US' ),
+				'url-slugs'                            => array(
+					'uk'    => 'uk',
+					'en_US' => 'en',
+				),
+				'add-subdirectory-to-default-language' => 'no',
+				'force-language-to-custom-links'       => 'yes',
+				'trp-ls-floater'                       => 'no',
+				'native_or_english_name'               => 'native_name',
+			)
+		);
+		update_option( 'trp_settings', $trp->get_component( 'settings' )->sanitize_settings( $settings ) );
+
+		$switcher = get_option( 'trp_language_switcher_settings', array() );
+		if ( is_array( $switcher ) ) {
+			$switcher['floater']['enabled'] = false;
+			update_option( 'trp_language_switcher_settings', $switcher );
+		}
+
+		$file  = dirname( ZERNYAR_DEMO_CATALOG ) . '/translations-en.json';
+		$pairs = (array) json_decode( (string) file_get_contents( $file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local file.
+		$query = $trp->get_component( 'query' );
+		foreach ( array_chunk( $pairs, 100, true ) as $chunk ) {
+			$originals = array_map( 'strval', array_keys( $chunk ) );
+			$missing   = array_diff( $originals, array_keys( $query->get_string_ids( $originals, 'en_US' ) ) );
+			if ( $missing ) {
+				$query->insert_strings( array_values( $missing ), 'en_US' );
+			}
+			$ids  = $query->get_string_ids( $originals, 'en_US' );
+			$rows = array();
+			foreach ( $chunk as $uk => $en ) {
+				if ( isset( $ids[ $uk ] ) ) {
+					$rows[] = array(
+						'id'         => (int) $ids[ $uk ]->id,
+						'translated' => (string) $en,
+						'status'     => 2,
+					);
+				}
+			}
+			$query->update_strings( $rows, 'en_US', array( 'id', 'translated', 'status' ) );
+		}
 		return true;
 	}
 
