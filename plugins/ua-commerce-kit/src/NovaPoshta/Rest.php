@@ -118,7 +118,13 @@ final class Rest {
 		$ip    = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
 		$key   = 'uack_np_rate_' . substr( hash_hmac( 'sha256', $ip, wp_salt( 'nonce' ) ), 0, 20 );
 		$count = (int) get_transient( $key );
-		if ( $count >= self::LIMIT ) {
+		/**
+		 * Searches one visitor may make in ten minutes.
+		 *
+		 * @param int $limit Searches.
+		 */
+		$limit = (int) apply_filters( 'uack_np_rate_limit', self::LIMIT );
+		if ( $count >= $limit ) {
 			return new WP_Error( 'uack_np_rate_limited', __( 'Too many searches. Try again in a few minutes.', 'ua-commerce-kit' ), array( 'status' => 429 ) );
 		}
 		set_transient( $key, $count + 1, self::WINDOW );

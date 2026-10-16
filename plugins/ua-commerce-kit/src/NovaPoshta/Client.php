@@ -147,7 +147,7 @@ final class Client {
 	}
 
 	/**
-	 * The data field of a successful answer, cached for a day.
+	 * The data field of a successful answer, cached for a day by default.
 	 *
 	 * @param string               $model      Model name.
 	 * @param string               $method     Method name.
@@ -155,8 +155,14 @@ final class Client {
 	 * @return array<int|string, mixed>|null
 	 */
 	private function cached( string $model, string $method, array $properties ): ?array {
+		/**
+		 * Seconds to keep Nova Poshta answers; 0 turns the cache off.
+		 *
+		 * @param int $ttl Seconds.
+		 */
+		$ttl    = (int) apply_filters( 'uack_np_cache_ttl', DAY_IN_SECONDS );
 		$key    = 'uack_np_' . md5( (string) wp_json_encode( array( $model, $method, $properties ) ) );
-		$cached = get_transient( $key );
+		$cached = $ttl > 0 ? get_transient( $key ) : false;
 		if ( is_array( $cached ) ) {
 			return $cached;
 		}
@@ -169,7 +175,9 @@ final class Client {
 		}
 
 		$data = is_array( $json['data'] ?? null ) ? $json['data'] : array();
-		set_transient( $key, $data, DAY_IN_SECONDS );
+		if ( $ttl > 0 ) {
+			set_transient( $key, $data, $ttl );
+		}
 		return $data;
 	}
 

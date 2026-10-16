@@ -9,8 +9,8 @@ The work lives in three parts:
 | Part | What it is |
 | --- | --- |
 | [`plugins/ua-commerce-kit`](plugins/ua-commerce-kit) | A WooCommerce plugin with Nova Poshta delivery, WayForPay payments and Telegram order notifications. Nothing in it is specific to this store. |
-| [`themes/zernyar`](themes/zernyar) | The block theme: home page, catalog with filters, product page, cart and checkout, in Ukrainian. |
-| [`plugins/zernyar-demo`](plugins/zernyar-demo) | The demo catalog (19 products, 12 of them coffees with weight and grind variations), pages and menu, and settings for free hosting. |
+| [`themes/zernyar`](themes/zernyar) | The block theme: home page, catalog with filters, product page, cart and checkout, in Ukrainian with an English version under `/en/`. |
+| [`plugins/zernyar-demo`](plugins/zernyar-demo) | The demo catalog (19 products, 12 of them coffees with weight and grind variations), pages and menu, the English translation for TranslatePress, and settings for free hosting. |
 
 ## Run it locally
 
@@ -32,6 +32,22 @@ The script creates `.env` with random local passwords, starts WordPress 7.1 on P
 - [Nova Poshta](docs/nova-poshta.md): shipping method, checkout picker, server checks
 - [WayForPay](docs/wayforpay.md): payment form, confirming payments, refunds
 - [Telegram](docs/telegram.md): order notifications
+- [Testing](docs/testing.md): unit and end-to-end tests, API fixtures, CI
+- [Deployment](docs/deployment.md): installing on shared hosting and the limits of the free one
+
+## Install on a WordPress site
+
+Every [release](https://github.com/IjdmLoverI/zernyar-shop/releases) has three zips: the plugin, the theme and the demo plugin. To build them from the source:
+
+```bash
+npm run zips   # writes dist/ua-commerce-kit-<version>.zip, zernyar-<version>.zip and zernyar-demo-<version>.zip
+```
+
+1. Install WooCommerce, and TranslatePress for the English version.
+2. Upload the three zips in Plugins → Add New → Upload and Appearance → Themes → Add New → Upload, then activate them.
+3. Import the demo in Tools → Zernyar demo. It runs in short parts, so it fits the time limits of free hosting.
+
+The details, and what changes on free hosting, are in [Deployment](docs/deployment.md).
 
 ## License
 

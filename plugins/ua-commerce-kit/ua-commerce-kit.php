@@ -3,7 +3,7 @@
  * Plugin Name:          UA Commerce Kit
  * Plugin URI:           https://github.com/IjdmLoverI/zernyar-shop
  * Description:          Nova Poshta delivery, WayForPay payments and Telegram order notifications for WooCommerce.
- * Version:              0.4.0
+ * Version:              1.0.0
  * Requires at least:    7.0
  * Requires PHP:         8.1
  * Requires Plugins:     woocommerce
@@ -21,7 +21,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'UACK_VERSION', '0.4.0' );
+define( 'UACK_VERSION', '1.0.0' );
 define( 'UACK_FILE', __FILE__ );
 define( 'UACK_DIR', __DIR__ );
 
