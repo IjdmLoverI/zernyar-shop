@@ -2,7 +2,7 @@
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.1
-Version: 0.1.0
+Version: 0.2.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

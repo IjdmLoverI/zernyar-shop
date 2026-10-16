@@ -49,12 +49,13 @@ function zernyar_preload_fonts(): void {
 add_action( 'wp_head', 'zernyar_preload_fonts', 1 );
 
 /**
- * Pattern category for the theme's sections.
+ * Pattern category for the theme's sections, and the theme's own blocks.
  */
-function zernyar_register_pattern_category(): void {
+function zernyar_register_blocks(): void {
 	register_block_pattern_category( 'zernyar', array( 'label' => __( 'Zernyar', 'zernyar' ) ) );
+	register_block_type( get_theme_file_path( 'blocks/language-switcher' ) );
 }
-add_action( 'init', 'zernyar_register_pattern_category' );
+add_action( 'init', 'zernyar_register_blocks' );
 
 /**
  * Link to a product category, or to the shop when the category does not exist yet.
@@ -88,7 +89,7 @@ function zernyar_variable_price_html( string $html, $product ): string {
 	if ( $min === $max ) {
 		return $html;
 	}
-	/* translators: %s: the lowest price. */
-	return sprintf( esc_html__( 'from %s', 'zernyar' ), wc_price( $min ) );
+	// A no-break space: TranslatePress trims the plain space between the word and the price.
+	return '<span class="zernyar-price-from">' . esc_html__( 'from', 'zernyar' ) . '</span>&nbsp;' . wc_price( $min );
 }
 add_filter( 'woocommerce_variable_price_html', 'zernyar_variable_price_html', 10, 2 );

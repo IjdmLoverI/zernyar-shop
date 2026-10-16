@@ -15,7 +15,16 @@ if ! wp core is-installed 2>/dev/null; then
 		--skip-email
 fi
 
-wp language core install uk --activate
+# Downloads from wordpress.org fail now and then on CI runners, usually on DNS.
+retry() {
+	for attempt in 1 2 3; do
+		"$@" && return 0
+		[ "$attempt" = 3 ] || sleep 10
+	done
+	return 1
+}
+
+retry wp language core install uk --activate
 wp option update timezone_string Europe/Kyiv
 wp option update date_format 'd.m.Y'
 wp option update time_format 'H:i'
@@ -26,14 +35,14 @@ install_plugin() {
 	slug="$1"
 	version="$2"
 	if [ "$(wp plugin get "$slug" --field=version 2>/dev/null || true)" != "$version" ]; then
-		wp plugin install "$slug" --version="$version" --force
+		retry wp plugin install "$slug" --version="$version" --force
 	fi
 }
 
 install_plugin woocommerce "$WOOCOMMERCE_VERSION"
 install_plugin translatepress-multilingual "$TRANSLATEPRESS_VERSION"
 wp plugin activate woocommerce
-wp language plugin install woocommerce uk
+retry wp language plugin install woocommerce uk
 
 wp option update woocommerce_default_country UA
 wp option update woocommerce_currency UAH
@@ -52,6 +61,9 @@ wp option update woocommerce_onboarding_profile '{"skipped":true}' --format=json
 
 wp theme activate zernyar
 wp plugin activate ua-commerce-kit zernyar-demo
+# TranslatePress redirects to its onboarding and exits on activation, ending the command there.
+wp plugin activate translatepress-multilingual
+wp plugin is-active translatepress-multilingual
 
 wp plugin delete hello akismet 2>/dev/null || true
 wp theme delete twentytwentythree twentytwentyfour 2>/dev/null || true

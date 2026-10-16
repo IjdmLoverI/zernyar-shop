@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "zernyar/language-switcher",
+	"title": "Language switcher",
+	"category": "theme",
+	"description": "Links to the current page in the other languages of the store. Needs TranslatePress.",
+	"textdomain": "zernyar",
+	"supports": {
+		"html": false
+	},
+	"render": "file:./render.php"
+}

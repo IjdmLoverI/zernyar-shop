@@ -46,6 +46,13 @@ Strings in the theme are English and wrapped in `__()`; `languages/uk.po` transl
 the same templates can show either language without a second copy. `bash scripts/i18n.sh`
 refreshes the template and compiles the `.mo` files.
 
+## Language switcher
+
+`blocks/language-switcher` is a server-rendered block in the header. With TranslatePress active it
+prints **UA** and **EN** links to the current page in each language, marks the current one with
+`aria-current` and keeps itself out of translation with `data-no-translation`. Without
+TranslatePress it prints nothing.
+
 ## Development mode
 
 `docker-compose.yml` sets `WP_DEVELOPMENT_MODE` to `theme`, so WordPress does not cache the list

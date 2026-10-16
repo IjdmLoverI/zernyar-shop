@@ -41,12 +41,6 @@ msgstr "Кирило Бучинський"
 msgid "https://github.com/IjdmLoverI"
 msgstr ""
 
-#. translators: %s: the lowest price.
-#: functions.php:92
-#, php-format
-msgid "from %s"
-msgstr "від %s"
-
 #: patterns/benefits.php
 msgctxt "Pattern title"
 msgid "Benefits"
@@ -462,3 +456,21 @@ msgstr "Свіже обсмаження"
 #: patterns/featured-products.php:16
 msgid "Popular this week"
 msgstr "Популярне цього тижня"
+
+#: functions.php:93
+msgid "from"
+msgstr "від"
+
+#: blocks/language-switcher/render.php:19
+msgid "Language"
+msgstr "Мова"
+
+#: blocks/language-switcher/block.json
+msgctxt "block title"
+msgid "Language switcher"
+msgstr "Перемикач мови"
+
+#: blocks/language-switcher/block.json
+msgctxt "block description"
+msgid "Links to the current page in the other languages of the store. Needs TranslatePress."
+msgstr "Посилання на цю сторінку іншими мовами магазину. Потрібен TranslatePress."
