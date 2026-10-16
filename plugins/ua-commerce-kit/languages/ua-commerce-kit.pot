@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: UA Commerce Kit 0.2.0\n"
+"Project-Id-Version: UA Commerce Kit 0.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/IjdmLoverI/zernyar-shop/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-16T10:02:07+00:00\n"
+"POT-Creation-Date: 2026-10-16T10:17:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ua-commerce-kit\n"
@@ -42,68 +42,98 @@ msgid "https://github.com/IjdmLoverI"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:37
-#: src/Admin/SettingsPage.php:94
+#: src/Admin/SettingsPage.php:147
 msgid "Modules"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:38
-#: src/Admin/SettingsPage.php:52
-#: src/Admin/SettingsPage.php:100
+#: src/Admin/SettingsPage.php:105
+#: src/Admin/SettingsPage.php:153
 #: src/NovaPoshta/OrderDetails.php:86
 #: src/NovaPoshta/ShippingMethod.php:29
 msgid "Nova Poshta"
 msgstr ""
 
+#: src/Admin/SettingsPage.php:39
 #: src/Admin/SettingsPage.php:53
-msgid "Add the Nova Poshta method to a shipping zone in WooCommerce → Settings → Shipping; its cost is set there."
+#: src/Admin/SettingsPage.php:167
+msgid "Telegram"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:58
-msgid "API key"
+#: src/Admin/SettingsPage.php:54
+msgid "Create a bot with @BotFather, paste its token here, write anything to the bot and pick your chat below. The UACK_TELEGRAM_TOKEN and UACK_TELEGRAM_CHAT_ID constants win over these fields."
 msgstr ""
 
 #: src/Admin/SettingsPage.php:59
-msgid "From the Nova Poshta business account → Settings → Security. City and branch lookups and delivery prices work without it."
+msgid "Bot token"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:65
+msgid "Chat ID"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:66
-msgid "Sender city"
+msgid "Your chat with the bot, or a group the bot is in."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:67
-msgid "Where parcels are sent from. Used to ask Nova Poshta for the delivery price."
+#: src/Admin/SettingsPage.php:72
+msgid "Send"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:73
+msgid "New orders"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:80
+msgid "Online payments"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:106
+msgid "Add the Nova Poshta method to a shipping zone in WooCommerce → Settings → Shipping; its cost is set there."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:111
+msgid "API key"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:112
+msgid "From the Nova Poshta business account → Settings → Security. City and branch lookups and delivery prices work without it."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:119
+msgid "Sender city"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:120
+msgid "Where parcels are sent from. Used to ask Nova Poshta for the delivery price."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:126
 msgid "Address fields"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:74
+#: src/Admin/SettingsPage.php:127
 msgid "Hide street, postcode and region for Ukraine: the picked branch replaces them"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:95
+#: src/Admin/SettingsPage.php:148
 msgid "Switch off what this store does not use. Tools → Site Health checks that the services can be reached from this server."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:101
+#: src/Admin/SettingsPage.php:154
 msgid "Delivery to Nova Poshta branches and parcel lockers"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:107
+#: src/Admin/SettingsPage.php:160
 #: src/WayForPay/Gateway.php:29
 msgid "WayForPay"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:108
+#: src/Admin/SettingsPage.php:161
 msgid "Card payments through WayForPay"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:114
-msgid "Telegram"
-msgstr ""
-
-#: src/Admin/SettingsPage.php:115
+#: src/Admin/SettingsPage.php:168
 msgid "Order notifications in Telegram"
 msgstr ""
 
@@ -245,8 +275,76 @@ msgstr ""
 msgid "Order total from which delivery is free. Leave empty to always charge."
 msgstr ""
 
-#: src/Plugin.php:70
+#: src/Plugin.php:74
 msgid "Settings"
+msgstr ""
+
+#. translators: %s: order number.
+#: src/Telegram/Message.php:46
+#, php-format
+msgid "Order #%s is paid"
+msgstr ""
+
+#. translators: %s: order number.
+#: src/Telegram/Message.php:48
+#, php-format
+msgid "New order #%s"
+msgstr ""
+
+#: src/Telegram/Message.php:62
+msgid "Open the order"
+msgstr ""
+
+#: src/Telegram/Module.php:36
+msgid "Check"
+msgstr ""
+
+#: src/Telegram/Module.php:38
+msgid "Save a bot token to send a test message."
+msgstr ""
+
+#: src/Telegram/Module.php:42
+msgid "Send a test message"
+msgstr ""
+
+#: src/Telegram/Module.php:48
+msgid "Chats that wrote to the bot lately; copy the ID into the field above:"
+msgstr ""
+
+#: src/Telegram/Module.php:55
+msgid "Write anything to the bot in Telegram and reload this page to see your chat ID."
+msgstr ""
+
+#: src/Telegram/Module.php:67
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: src/Telegram/Module.php:73
+msgid "Set the bot token and the chat ID first."
+msgstr ""
+
+#: src/Telegram/Module.php:74
+msgid "Test message from the store. Order notifications will come here."
+msgstr ""
+
+#: src/Telegram/Module.php:93
+msgid "The test message is sent. Check the chat."
+msgstr ""
+
+#. translators: %s: error from Telegram.
+#: src/Telegram/Module.php:97
+#, php-format
+msgid "Telegram did not take the message: %s"
+msgstr ""
+
+#. translators: %s: error from Telegram.
+#: src/Telegram/Notifier.php:88
+#, php-format
+msgid "Telegram notification was not sent: %s"
+msgstr ""
+
+#: src/Telegram/Notifier.php:120
+msgid "waiting for payment"
 msgstr ""
 
 #: src/WayForPay/Endpoints.php:104
