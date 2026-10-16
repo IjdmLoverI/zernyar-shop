@@ -33,13 +33,33 @@ jobs:
       - run: composer analyse
       - run: composer test
 
+  js:
+    name: JavaScript lint and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint:js
+      - run: npm run build
+
   site:
     name: Store in Docker and Plugin Check
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    needs: php
+    needs: [php, js]
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
       - run: bash scripts/setup.sh
       - run: bash scripts/smoke.sh
       - run: bash scripts/plugin-check.sh

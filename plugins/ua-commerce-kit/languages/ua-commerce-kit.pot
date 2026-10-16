@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-16T08:17:54+00:00\n"
+"POT-Creation-Date: 2026-10-16T09:02:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ua-commerce-kit\n"
@@ -41,35 +41,68 @@ msgstr ""
 msgid "https://github.com/IjdmLoverI"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:40
+#: src/Admin/SettingsPage.php:37
+#: src/Admin/SettingsPage.php:94
 msgid "Modules"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:41
-msgid "Switch off what this store does not use. Tools → Site Health checks that the services can be reached from this server."
-msgstr ""
-
-#: src/Admin/SettingsPage.php:46
+#: src/Admin/SettingsPage.php:38
+#: src/Admin/SettingsPage.php:52
+#: src/Admin/SettingsPage.php:100
+#: src/NovaPoshta/OrderDetails.php:86
+#: src/NovaPoshta/ShippingMethod.php:29
 msgid "Nova Poshta"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:47
+#: src/Admin/SettingsPage.php:53
+msgid "Add the Nova Poshta method to a shipping zone in WooCommerce → Settings → Shipping; its cost is set there."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:58
+msgid "API key"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:59
+msgid "From the Nova Poshta business account → Settings → Security. City and branch lookups and delivery prices work without it."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:66
+msgid "Sender city"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:67
+msgid "Where parcels are sent from. Used to ask Nova Poshta for the delivery price."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:73
+msgid "Address fields"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:74
+msgid "Hide street, postcode and region for Ukraine: the picked branch replaces them"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:95
+msgid "Switch off what this store does not use. Tools → Site Health checks that the services can be reached from this server."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:101
 msgid "Delivery to Nova Poshta branches and parcel lockers"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:53
+#: src/Admin/SettingsPage.php:107
 msgid "WayForPay"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:54
+#: src/Admin/SettingsPage.php:108
 msgid "Card payments through WayForPay"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:60
+#: src/Admin/SettingsPage.php:114
 msgid "Telegram"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:61
+#: src/Admin/SettingsPage.php:115
 msgid "Order notifications in Telegram"
 msgstr ""
 
@@ -129,6 +162,129 @@ msgstr ""
 msgid "Order notifications are sent to Telegram from this server."
 msgstr ""
 
-#: src/Plugin.php:61
+#: src/NovaPoshta/Checkout.php:85
+msgid "This branch is in another city."
+msgstr ""
+
+#: src/NovaPoshta/Checkout.php:121
+msgid "Choose a Nova Poshta branch or parcel locker for delivery."
+msgstr ""
+
+#: src/NovaPoshta/Checkout.php:126
+msgid "The picked branch is in another city. Choose the branch again."
+msgstr ""
+
+#: src/NovaPoshta/Checkout.php:133
+msgid "Enter a Ukrainian mobile number, for example +380 67 123 45 67. Nova Poshta sends the parcel code to it."
+msgstr ""
+
+#: src/NovaPoshta/OrderDetails.php:68
+#: build/checkout.js:1
+msgid "Parcel locker"
+msgstr ""
+
+#: src/NovaPoshta/OrderDetails.php:69
+#: build/checkout.js:1
+msgid "Pickup point"
+msgstr ""
+
+#: src/NovaPoshta/OrderDetails.php:70
+#: build/checkout.js:1
+msgid "Branch"
+msgstr ""
+
+#: src/NovaPoshta/OrderDetails.php:91
+msgid "Branch reference for the waybill:"
+msgstr ""
+
+#: src/NovaPoshta/Rest.php:120
+msgid "Too many searches. Try again in a few minutes."
+msgstr ""
+
+#: src/NovaPoshta/Rest.php:130
+msgid "Nova Poshta does not answer right now. Try again in a minute."
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:30
+msgid "Delivery to a Nova Poshta branch, parcel locker or pickup point that the shopper picks at checkout."
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:41
+msgid "Title"
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:43
+#: src/NovaPoshta/ShippingMethod.php:69
+msgid "Nova Poshta: branch or parcel locker"
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:46
+msgid "Cost"
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:50
+msgid "Nova Poshta tariff for the picked city"
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:51
+#: src/NovaPoshta/ShippingMethod.php:55
+msgid "Fixed cost"
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:58
+msgid "Also used with the tariff until the shopper picks a city or when Nova Poshta does not answer."
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:62
+msgid "Free from"
+msgstr ""
+
+#: src/NovaPoshta/ShippingMethod.php:65
+msgid "Order total from which delivery is free. Leave empty to always charge."
+msgstr ""
+
+#: src/Plugin.php:66
 msgid "Settings"
+msgstr ""
+
+#: build/checkout.js:1
+msgid "Searching…"
+msgstr ""
+
+#: build/checkout.js:1
+msgid "Nothing found"
+msgstr ""
+
+#: build/checkout.js:1
+msgid "Nova Poshta does not answer. Try again in a minute."
+msgstr ""
+
+#: build/checkout.js:1
+msgid "Type at least two letters"
+msgstr ""
+
+#: build/checkout.js:1
+msgid "Choose a Nova Poshta branch or parcel locker."
+msgstr ""
+
+#: build/checkout.js:1
+msgid "Where to deliver"
+msgstr ""
+
+#: build/checkout.js:1
+msgid "City"
+msgstr ""
+
+#: build/checkout.js:1
+msgid "Branch or parcel locker"
+msgstr ""
+
+#. translators: 1: Branch, Parcel locker or Pickup point. 2: number.
+#: build/checkout.js:2
+#, js-format
+msgid "%1$s №%2$s"
+msgstr ""
+
+#: build/checkout.js:2
+msgid "Start typing the city, then pick a branch, a parcel locker or a pickup point."
 msgstr ""

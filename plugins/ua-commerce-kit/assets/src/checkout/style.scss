@@ -1,0 +1,80 @@
+.uack-np-picker {
+	margin: 1.25em 0 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+
+	&[aria-busy="true"] {
+		opacity: 0.7;
+	}
+}
+
+.uack-np-picker__legend {
+	margin-bottom: 0.5em;
+	padding: 0;
+	font-weight: 600;
+}
+
+.uack-np-picker__hint {
+	margin: 0.75em 0 0;
+	font-size: 0.875em;
+	opacity: 0.8;
+}
+
+.uack-np-combobox {
+	position: relative;
+
+	& + & {
+		margin-top: 1em;
+	}
+
+	input:disabled {
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+}
+
+.uack-np-combobox__list {
+	position: absolute;
+	z-index: 20;
+	top: calc(100% + 4px);
+	left: 0;
+	right: 0;
+	max-height: 18em;
+	margin: 0;
+	padding: 4px;
+	overflow-y: auto;
+	list-style: none;
+	background: #fff;
+	border: 1px solid rgb(0 0 0 / 15%);
+	border-radius: 6px;
+	box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+}
+
+.uack-np-combobox__option {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 8px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+
+	&.is-active {
+		background: rgb(0 0 0 / 6%);
+	}
+}
+
+.uack-np-combobox__message {
+	padding: 8px 10px;
+	font-size: 0.875em;
+	opacity: 0.75;
+}
+
+.uack-np-option__title {
+	font-weight: 600;
+}
+
+.uack-np-option__meta {
+	font-size: 0.8125em;
+	opacity: 0.75;
+}

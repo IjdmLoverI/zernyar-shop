@@ -3,12 +3,17 @@
 	"private": true,
 	"description": "Build and test tools for the Zernyar WooCommerce store.",
 	"license": "GPL-2.0-or-later",
-	"type": "module",
 	"scripts": {
+		"build": "wp-scripts build --config webpack.config.cjs",
+		"start": "wp-scripts start --config webpack.config.cjs",
+		"lint:js": "wp-scripts lint-js plugins/ua-commerce-kit/assets/src scripts",
+		"lint:css": "wp-scripts lint-style \"plugins/ua-commerce-kit/assets/src/**/*.scss\" \"themes/zernyar/assets/css/*.css\"",
 		"render:packs": "node scripts/render-packs.mjs"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.64.0"
+		"@playwright/test": "1.64.0",
+		"@woocommerce/dependency-extraction-webpack-plugin": "5.1.0",
+		"@wordpress/scripts": "36.0.0"
 	},
 	"engines": {
 		"node": ">=20"

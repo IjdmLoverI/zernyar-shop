@@ -3,7 +3,7 @@ Tags: woocommerce, nova poshta, wayforpay, telegram, ukraine
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,11 @@ The plugin talks to these services from the store's server:
 * [Telegram Bot API](https://core.telegram.org/bots/api) (`api.telegram.org`): order notifications with the shopper's name, phone and delivery branch go to the chat set in the settings. [Terms](https://telegram.org/tos).
 
 == Changelog ==
+
+= 0.2.0 =
+* Nova Poshta shipping method with the carrier tariff or a fixed cost and a free-delivery threshold.
+* City and branch picker in the Checkout block; the branch becomes the shipping address.
+* Server-side checks of the branch and the phone before the order is placed.
 
 = 0.1.0 =
 * Module switches.

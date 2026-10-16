@@ -9,6 +9,7 @@ namespace UaCommerceKit;
 
 use UaCommerceKit\Admin\SettingsPage;
 use UaCommerceKit\Health\SiteHealth;
+use UaCommerceKit\NovaPoshta\Module as NovaPoshta;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -30,6 +31,10 @@ final class Plugin {
 		add_filter( 'plugin_action_links_' . plugin_basename( UACK_FILE ), array( self::class, 'add_action_links' ) );
 
 		( new SiteHealth() )->register();
+
+		if ( self::module_enabled( 'nova_poshta' ) ) {
+			NovaPoshta::register();
+		}
 	}
 
 	/**

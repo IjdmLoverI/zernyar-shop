@@ -14,9 +14,11 @@ The work lives in three parts:
 
 ## Run it locally
 
-You need Docker and Bash (Git Bash on Windows).
+You need Docker, Node 20+ and Bash (Git Bash on Windows).
 
 ```bash
+npm ci
+npm run build
 bash scripts/setup.sh
 ```
 
@@ -27,6 +29,7 @@ The script creates `.env` with random local passwords, starts WordPress 7.1 on P
 - [Development](docs/development.md): containers, checks, Telegram on the local site
 - [Theme](docs/theme.md): design tokens, templates, translations
 - [Demo content](docs/demo-content.md): the import and the generated product images
+- [Nova Poshta](docs/nova-poshta.md): shipping method, checkout picker, server checks
 
 ## License
 

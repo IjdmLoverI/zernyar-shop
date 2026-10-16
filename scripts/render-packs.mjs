@@ -9,93 +9,124 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { chromium } from '@playwright/test';
 
-const root = resolve(import.meta.dirname, '..');
-const catalog = JSON.parse(readFileSync(join(root, 'plugins/zernyar-demo/data/catalog.json'), 'utf8'));
-const outDir = join(root, 'plugins/zernyar-demo/assets/products');
-const fontDir = join(root, 'themes/zernyar/assets/fonts');
-const font = (file) => `data:font/woff2;base64,${readFileSync(join(fontDir, file)).toString('base64')}`;
-const bean = readFileSync(join(root, 'themes/zernyar/assets/icons/bean.svg'), 'utf8')
-	.replace(/<!--.*?-->/s, '')
-	.replace('stroke="currentColor"', 'stroke="currentColor" aria-hidden="true"');
+const root = resolve( import.meta.dirname, '..' );
+const catalog = JSON.parse(
+	readFileSync(
+		join( root, 'plugins/zernyar-demo/data/catalog.json' ),
+		'utf8'
+	)
+);
+const outDir = join( root, 'plugins/zernyar-demo/assets/products' );
+const fontDir = join( root, 'themes/zernyar/assets/fonts' );
+const font = ( file ) =>
+	`data:font/woff2;base64,${ readFileSync( join( fontDir, file ) ).toString( 'base64' ) }`;
+const bean = readFileSync(
+	join( root, 'themes/zernyar/assets/icons/bean.svg' ),
+	'utf8'
+)
+	.replace( /<!--.*?-->/s, '' )
+	.replace(
+		'stroke="currentColor"',
+		'stroke="currentColor" aria-hidden="true"'
+	);
 const ffmpeg = process.env.FFMPEG || 'ffmpeg';
-const only = process.argv.slice(2);
+const only = process.argv.slice( 2 );
 
 const roastLevel = { light: 1, medium: 2, 'medium-dark': 3, dark: 4 };
 
-const term = (attribute, slug) => catalog.attributes[attribute].terms[slug];
+const term = ( attribute, slug ) =>
+	catalog.attributes[ attribute ].terms[ slug ];
 
-const escape = (text) =>
-	String(text).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const escape = ( text ) =>
+	String( text ).replace(
+		/[&<>"]/g,
+		( c ) =>
+			( { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' } )[ c ]
+	);
 
-const shortName = (product) => product.name.replace(/,\s*\d+.*$/, '').replace(/^Дріп-пакети\s+/, '');
+const shortName = ( product ) =>
+	product.name.replace( /,\s*\d+.*$/, '' ).replace( /^Дріп-пакети\s+/, '' );
 
-function originLine(product) {
-	const origins = (product.attributes?.origin ?? []).map((slug) => term('origin', slug));
-	const processing = (product.attributes?.processing ?? []).map((slug) => term('processing', slug).toLowerCase());
-	return [origins.join(' + '), processing.join(' + ')].filter(Boolean).join(' · ');
+function originLine( product ) {
+	const origins = ( product.attributes?.origin ?? [] ).map( ( slug ) =>
+		term( 'origin', slug )
+	);
+	const processing = ( product.attributes?.processing ?? [] ).map( ( slug ) =>
+		term( 'processing', slug ).toLowerCase()
+	);
+	return [ origins.join( ' + ' ), processing.join( ' + ' ) ]
+		.filter( Boolean )
+		.join( ' · ' );
 }
 
-function dots(product) {
-	const level = roastLevel[product.attributes?.roast?.[0]] ?? 0;
-	if (!level) {
+function dots( product ) {
+	const level = roastLevel[ product.attributes?.roast?.[ 0 ] ] ?? 0;
+	if ( ! level ) {
 		return '';
 	}
-	const items = [1, 2, 3, 4].map((i) => `<i class="${i <= level ? 'on' : ''}"></i>`).join('');
-	return `<span class="roast"><span class="dots">${items}</span>${escape(term('roast', product.attributes.roast[0]).toLowerCase())}</span>`;
+	const items = [ 1, 2, 3, 4 ]
+		.map( ( i ) => `<i class="${ i <= level ? 'on' : '' }"></i>` )
+		.join( '' );
+	return `<span class="roast"><span class="dots">${ items }</span>${ escape( term( 'roast', product.attributes.roast[ 0 ] ).toLowerCase() ) }</span>`;
 }
 
-function label(product, { weight, compact = false } = {}) {
-	const title = product.image.label ?? shortName(product);
+function label( product, { weight, compact = false } = {} ) {
+	const title = product.image.label ?? shortName( product );
 	return `
-		<div class="label ${compact ? 'compact' : ''}" style="--tone:${product.image.color}">
-			<div class="brand">${bean}<span>Зерняр</span></div>
+		<div class="label ${ compact ? 'compact' : '' }" style="--tone:${ product.image.color }">
+			<div class="brand">${ bean }<span>Зерняр</span></div>
 			<div class="body">
-				<div class="name">${escape(title)}</div>
-				${compact ? '' : `<div class="origin">${escape(originLine(product))}</div>`}
-				${compact ? '' : `<div class="notes">${escape(product.notes ?? '')}</div>`}
+				<div class="name">${ escape( title ) }</div>
+				${ compact ? '' : `<div class="origin">${ escape( originLine( product ) ) }</div>` }
+				${ compact ? '' : `<div class="notes">${ escape( product.notes ?? '' ) }</div>` }
 			</div>
-			<div class="foot">${compact ? '' : dots(product)}<span class="weight">${escape(weight ?? '')}</span></div>
+			<div class="foot">${ compact ? '' : dots( product ) }<span class="weight">${ escape( weight ?? '' ) }</span></div>
 		</div>`;
 }
 
-function pouch(product, { weight = '250 г', scale = 1, x = 0, y = 0, z = 1 } = {}) {
+function pouch(
+	product,
+	{ weight = '250 г', scale = 1, x = 0, y = 0, z = 1 } = {}
+) {
 	return `
-		<div class="pouch" style="--tone:${product.image.color};transform:translate(${x}px, ${y}px) scale(${scale});z-index:${z}">
+		<div class="pouch" style="--tone:${ product.image.color };transform:translate(${ x }px, ${ y }px) scale(${ scale });z-index:${ z }">
 			<div class="crimp"></div>
 			<div class="valve"></div>
-			${label(product, { weight, compact: scale < 0.8 })}
+			${ label( product, { weight, compact: scale < 0.8 } ) }
 		</div>`;
 }
 
-function box(product) {
-	const count = product.sku.startsWith('ZR-DRP') ? '10 дріп-пакетів' : '100 шт.';
+function box( product ) {
+	const count = product.sku.startsWith( 'ZR-DRP' )
+		? '10 дріп-пакетів'
+		: '100 шт.';
 	return `
-		<div class="box" style="--tone:${product.image.color}">
+		<div class="box" style="--tone:${ product.image.color }">
 			<div class="lid"></div>
-			<div class="front">${label(product, { weight: count })}</div>
+			<div class="front">${ label( product, { weight: count } ) }</div>
 		</div>`;
 }
 
-function gift(product) {
-	const find = (sku) => catalog.products.find((p) => p.sku === sku);
+function gift( product ) {
+	const find = ( sku ) => catalog.products.find( ( p ) => p.sku === sku );
 	return `
 		<div class="gift">
-			${pouch(find('ZR-ETH-YIR'), { weight: '100 г', scale: 0.62, x: -230, y: 40, z: 1 })}
-			${pouch(find('ZR-BRA-CER'), { weight: '100 г', scale: 0.62, x: 230, y: 40, z: 1 })}
-			${pouch(find('ZR-COL-HUI'), { weight: '100 г', scale: 0.7, x: 0, y: 10, z: 2 })}
-			<div class="ribbon" style="--tone:${product.image.color}">Знайомство · 3 × 100 г</div>
+			${ pouch( find( 'ZR-ETH-YIR' ), { weight: '100 г', scale: 0.62, x: -230, y: 40, z: 1 } ) }
+			${ pouch( find( 'ZR-BRA-CER' ), { weight: '100 г', scale: 0.62, x: 230, y: 40, z: 1 } ) }
+			${ pouch( find( 'ZR-COL-HUI' ), { weight: '100 г', scale: 0.7, x: 0, y: 10, z: 2 } ) }
+			<div class="ribbon" style="--tone:${ product.image.color }">Знайомство · 3 × 100 г</div>
 		</div>`;
 }
 
-function page(product) {
-	const kind = product.image.kind;
-	const art = kind === 'box' ? box(product) : kind === 'gift' ? gift(product) : pouch(product);
+function page( product ) {
+	const draw = { box, gift, pouch };
+	const art = ( draw[ product.image.kind ] ?? pouch )( product );
 	return `<!doctype html><html lang="uk"><head><meta charset="utf-8"><style>
-		@font-face { font-family: Manrope; src: url(${font('manrope-cyrillic.woff2')}) format('woff2'); font-weight: 400 800; unicode-range: U+0400-045F, U+0490-0491; }
-		@font-face { font-family: Manrope; src: url(${font('manrope-latin.woff2')}) format('woff2'); font-weight: 400 800; }
-		@font-face { font-family: Manrope; src: url(${font('manrope-cyrillic-ext.woff2')}) format('woff2'); font-weight: 400 800; unicode-range: U+0460-052F, U+20B4; }
-		@font-face { font-family: Lora; src: url(${font('lora-cyrillic.woff2')}) format('woff2'); font-weight: 400 700; unicode-range: U+0400-045F, U+0490-0491; }
-		@font-face { font-family: Lora; src: url(${font('lora-latin.woff2')}) format('woff2'); font-weight: 400 700; }
+		@font-face { font-family: Manrope; src: url(${ font( 'manrope-cyrillic.woff2' ) }) format('woff2'); font-weight: 400 800; unicode-range: U+0400-045F, U+0490-0491; }
+		@font-face { font-family: Manrope; src: url(${ font( 'manrope-latin.woff2' ) }) format('woff2'); font-weight: 400 800; }
+		@font-face { font-family: Manrope; src: url(${ font( 'manrope-cyrillic-ext.woff2' ) }) format('woff2'); font-weight: 400 800; unicode-range: U+0460-052F, U+20B4; }
+		@font-face { font-family: Lora; src: url(${ font( 'lora-cyrillic.woff2' ) }) format('woff2'); font-weight: 400 700; unicode-range: U+0400-045F, U+0490-0491; }
+		@font-face { font-family: Lora; src: url(${ font( 'lora-latin.woff2' ) }) format('woff2'); font-weight: 400 700; }
 		* { box-sizing: border-box; margin: 0; }
 		body { width: 1000px; height: 1000px; }
 		#stage { position: relative; width: 1000px; height: 1000px; display: grid; place-items: center; overflow: hidden;
@@ -141,28 +172,46 @@ function page(product) {
 		.gift { position: relative; z-index: 1; width: 1000px; height: 1000px; }
 		.ribbon { position: absolute; left: 50%; bottom: 120px; transform: translateX(-50%); z-index: 3; padding: 14px 30px; border-radius: 999px;
 			background: var(--tone); color: #fbf7f0; font-family: Lora, serif; font-size: 30px; font-weight: 700; white-space: nowrap; box-shadow: 0 10px 24px rgb(31 23 18 / 22%); }
-	</style></head><body><div id="stage">${art}</div></body></html>`;
+	</style></head><body><div id="stage">${ art }</div></body></html>`;
 }
 
 const products = catalog.products.filter(
-	(p) => ['pouch', 'box', 'gift'].includes(p.image.kind) && (only.length === 0 || only.includes(p.slug)),
+	( p ) =>
+		[ 'pouch', 'box', 'gift' ].includes( p.image.kind ) &&
+		( only.length === 0 || only.includes( p.slug ) )
 );
 
-const browser = await chromium.launch(process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {});
-const tab = await browser.newPage({ viewport: { width: 1000, height: 1000 } });
-const work = mkdtempSync(join(tmpdir(), 'zernyar-packs-'));
+const browser = await chromium.launch(
+	process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {}
+);
+const tab = await browser.newPage( {
+	viewport: { width: 1000, height: 1000 },
+} );
+const work = mkdtempSync( join( tmpdir(), 'zernyar-packs-' ) );
 
 try {
-	for (const product of products) {
-		await tab.setContent(page(product), { waitUntil: 'load' });
-		await tab.evaluate(() => document.fonts.ready);
-		const png = join(work, `${product.slug}.png`);
-		await tab.locator('#stage').screenshot({ path: png });
-		const webp = join(outDir, `${product.slug}.webp`);
-		execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-y', '-i', png, '-c:v', 'libwebp', '-quality', '82', webp]);
-		console.log(`${product.slug}.webp`);
+	for ( const product of products ) {
+		await tab.setContent( page( product ), { waitUntil: 'load' } );
+		await tab.evaluate( () => document.fonts.ready );
+		const png = join( work, `${ product.slug }.png` );
+		await tab.locator( '#stage' ).screenshot( { path: png } );
+		const webp = join( outDir, `${ product.slug }.webp` );
+		execFileSync( ffmpeg, [
+			'-hide_banner',
+			'-loglevel',
+			'error',
+			'-y',
+			'-i',
+			png,
+			'-c:v',
+			'libwebp',
+			'-quality',
+			'82',
+			webp,
+		] );
+		console.log( `${ product.slug }.webp` );
 	}
 } finally {
 	await browser.close();
-	rmSync(work, { recursive: true, force: true });
+	rmSync( work, { recursive: true, force: true } );
 }
