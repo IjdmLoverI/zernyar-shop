@@ -63,6 +63,7 @@ msgid "Delivery to Nova Poshta branches and parcel lockers"
 msgstr "Доставка у відділення й поштомати Нової Пошти"
 
 #: src/Admin/SettingsPage.php:107
+#: src/WayForPay/Gateway.php:29
 msgid "WayForPay"
 msgstr "WayForPay"
 
@@ -134,7 +135,7 @@ msgstr "Telegram-бот недоступний"
 msgid "Order notifications are sent to Telegram from this server."
 msgstr "Сповіщення про замовлення надсилаються в Telegram з цього сервера."
 
-#: src/Plugin.php:66
+#: src/Plugin.php:70
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -201,11 +202,11 @@ msgstr "Відділення"
 msgid "Branch reference for the waybill:"
 msgstr "Ідентифікатор відділення для накладної:"
 
-#: src/NovaPoshta/Rest.php:120
+#: src/NovaPoshta/Rest.php:122
 msgid "Too many searches. Try again in a few minutes."
 msgstr "Забагато пошукових запитів. Спробуйте за кілька хвилин."
 
-#: src/NovaPoshta/Rest.php:130
+#: src/NovaPoshta/Rest.php:132
 msgid "Nova Poshta does not answer right now. Try again in a minute."
 msgstr "Нова Пошта зараз не відповідає. Спробуйте за хвилину."
 
@@ -214,6 +215,7 @@ msgid "Delivery to a Nova Poshta branch, parcel locker or pickup point that the 
 msgstr "Доставка у відділення, поштомат або пункт Нової Пошти, який покупець обирає під час оформлення."
 
 #: src/NovaPoshta/ShippingMethod.php:41
+#: src/WayForPay/Gateway.php:59
 msgid "Title"
 msgstr "Назва"
 
@@ -288,3 +290,142 @@ msgstr "%1$s №%2$s"
 #: build/checkout.js:2
 msgid "Start typing the city, then pick a branch, a parcel locker or a pickup point."
 msgstr "Почніть вводити місто, потім оберіть відділення, поштомат або пункт."
+
+#: src/WayForPay/Endpoints.php:104
+msgid "return from the payment page"
+msgstr "повернення зі сторінки оплати"
+
+#: src/WayForPay/Endpoints.php:107
+msgid "The payment did not go through. You can try again or choose another payment method."
+msgstr "Оплата не пройшла. Спробуйте ще раз або оберіть інший спосіб оплати."
+
+#: src/WayForPay/Endpoints.php:127
+msgid "WayForPay callback"
+msgstr "сповіщення WayForPay"
+
+#: src/WayForPay/Endpoints.php:148
+msgid "thank-you page"
+msgstr "сторінка подяки"
+
+#: src/WayForPay/Endpoints.php:243
+msgid "Payment"
+msgstr "Оплата"
+
+#: src/WayForPay/Endpoints.php:246
+msgid "Taking you to the WayForPay payment page…"
+msgstr "Переходимо на сторінку оплати WayForPay…"
+
+#: src/WayForPay/Endpoints.php:247
+msgid "Go to payment"
+msgstr "Перейти до оплати"
+
+#: src/WayForPay/Gateway.php:30
+msgid "Card, Apple Pay and Google Pay on the WayForPay payment page. Test mode uses the public test merchant from the WayForPay docs, so nothing is charged."
+msgstr "Картка, Apple Pay і Google Pay на сторінці оплати WayForPay. У тестовому режимі використовується публічний тестовий мерчант із документації WayForPay, тож гроші не списуються."
+
+#: src/WayForPay/Gateway.php:53
+msgid "Enable"
+msgstr "Увімкнути"
+
+#: src/WayForPay/Gateway.php:55
+msgid "Accept payments through WayForPay"
+msgstr "Приймати оплату через WayForPay"
+
+#: src/WayForPay/Gateway.php:61
+#: build/wayforpay.js:1
+msgid "Card online"
+msgstr "Карткою онлайн"
+
+#: src/WayForPay/Gateway.php:64
+msgid "Description"
+msgstr "Опис"
+
+#: src/WayForPay/Gateway.php:66
+msgid "Visa, Mastercard, Apple Pay or Google Pay on the secure WayForPay page."
+msgstr "Visa, Mastercard, Apple Pay або Google Pay на захищеній сторінці WayForPay."
+
+#: src/WayForPay/Gateway.php:69
+msgid "Test mode"
+msgstr "Тестовий режим"
+
+#: src/WayForPay/Gateway.php:71
+msgid "Use the public test merchant; nothing is charged"
+msgstr "Використовувати публічний тестовий мерчант; гроші не списуються"
+
+#: src/WayForPay/Gateway.php:73
+msgid "Turn this off and fill in the merchant account and secret key from the WayForPay merchant account to take real payments."
+msgstr "Щоб приймати справжні платежі, вимкніть це й заповніть обліковий запис мерчанта та секретний ключ із кабінету WayForPay."
+
+#: src/WayForPay/Gateway.php:76
+msgid "Merchant account"
+msgstr "Обліковий запис мерчанта"
+
+#: src/WayForPay/Gateway.php:81
+msgid "Secret key"
+msgstr "Секретний ключ"
+
+#: src/WayForPay/Gateway.php:84
+msgid "Or define UACK_WFP_ACCOUNT and UACK_WFP_SECRET in wp-config.php."
+msgstr "Або задайте UACK_WFP_ACCOUNT і UACK_WFP_SECRET у wp-config.php."
+
+#: src/WayForPay/Gateway.php:130
+msgid "Nothing to refund."
+msgstr "Немає чого повертати."
+
+#. translators: %s: reason from WayForPay.
+#: src/WayForPay/Gateway.php:136
+#, php-format
+msgid "WayForPay refused the refund: %s"
+msgstr "WayForPay відхилив повернення: %s"
+
+#. translators: 1: amount, 2: status from WayForPay.
+#: src/WayForPay/Gateway.php:141
+#, php-format
+msgid "WayForPay refunded %1$s (%2$s)."
+msgstr "WayForPay повернув %1$s (%2$s)."
+
+#: src/WayForPay/OrderScreens.php:44
+msgid "The payment did not go through. You can pay again from your account or contact us."
+msgstr "Оплата не пройшла. Можна оплатити ще раз в особистому кабінеті або написати нам."
+
+#: src/WayForPay/OrderScreens.php:45
+msgid "Waiting for WayForPay to confirm the payment. The page updates by itself."
+msgstr "Чекаємо, поки WayForPay підтвердить оплату. Сторінка оновиться сама."
+
+#: src/WayForPay/OrderScreens.php:66
+msgid "Check the WayForPay payment"
+msgstr "Перевірити оплату WayForPay"
+
+#: src/WayForPay/OrderScreens.php:77
+msgid "manual check"
+msgstr "ручна перевірка"
+
+#: src/WayForPay/OrderScreens.php:79
+msgid "WayForPay has no payment for this order yet, or does not answer."
+msgstr "У WayForPay ще немає оплати цього замовлення, або сервіс не відповідає."
+
+#. translators: 1: amount, 2: currency.
+#: src/WayForPay/Payments.php:89
+#, php-format
+msgid "WayForPay reports a payment of %1$s %2$s, which does not match the order. Check it in the merchant account."
+msgstr "WayForPay повідомляє про оплату %1$s %2$s, яка не збігається із сумою замовлення. Перевірте її в кабінеті мерчанта."
+
+#. translators: 1: where the result came from, 2: masked card number, 3: bank authorization code.
+#: src/WayForPay/Payments.php:99
+#, php-format
+msgid "WayForPay approved the payment (%1$s): card %2$s, authorization code %3$s."
+msgstr "WayForPay підтвердив оплату (%1$s): картка %2$s, код авторизації %3$s."
+
+#: src/WayForPay/Payments.php:110
+msgid "WayForPay is still processing the payment."
+msgstr "WayForPay ще обробляє оплату."
+
+#. translators: %s: reason from WayForPay.
+#: src/WayForPay/Payments.php:117
+#, php-format
+msgid "WayForPay did not take the payment: %s."
+msgstr "WayForPay не провів оплату: %s."
+
+#: build/wayforpay.js:1
+msgid "Test mode: the payment page is real, but no money is taken. Do not enter a real card."
+msgstr "Тестовий режим: сторінка оплати справжня, але гроші не списуються. Не вводьте справжню картку."

@@ -10,6 +10,7 @@ namespace UaCommerceKit;
 use UaCommerceKit\Admin\SettingsPage;
 use UaCommerceKit\Health\SiteHealth;
 use UaCommerceKit\NovaPoshta\Module as NovaPoshta;
+use UaCommerceKit\WayForPay\Module as WayForPay;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -34,6 +35,9 @@ final class Plugin {
 
 		if ( self::module_enabled( 'nova_poshta' ) ) {
 			NovaPoshta::register();
+		}
+		if ( self::module_enabled( 'wayforpay' ) ) {
+			WayForPay::register();
 		}
 	}
 

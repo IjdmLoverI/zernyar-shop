@@ -30,6 +30,7 @@ The script creates `.env` with random local passwords, starts WordPress 7.1 on P
 - [Theme](docs/theme.md): design tokens, templates, translations
 - [Demo content](docs/demo-content.md): the import and the generated product images
 - [Nova Poshta](docs/nova-poshta.md): shipping method, checkout picker, server checks
+- [WayForPay](docs/wayforpay.md): payment form, confirming payments, refunds
 
 ## License
 

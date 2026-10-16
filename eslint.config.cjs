@@ -5,7 +5,10 @@ module.exports = [
 	{
 		// WordPress and WooCommerce provide these packages at runtime; the build maps them to globals.
 		rules: {
-			'import/no-unresolved': [ 'error', { ignore: [ '^@wordpress/', '^@woocommerce/' ] } ],
+			'import/no-unresolved': [
+				'error',
+				{ ignore: [ '^@wordpress/', '^@woocommerce/' ] },
+			],
 			'import/no-extraneous-dependencies': 'off',
 		},
 	},

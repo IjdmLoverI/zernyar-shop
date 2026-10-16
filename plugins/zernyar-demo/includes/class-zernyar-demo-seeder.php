@@ -130,7 +130,35 @@ final class Zernyar_Demo_Seeder {
 				'enable_for_virtual' => 'yes',
 			)
 		);
+		$wayforpay = get_option( 'woocommerce_uack_wayforpay_settings', array() );
+		update_option(
+			'woocommerce_uack_wayforpay_settings',
+			array_merge(
+				is_array( $wayforpay ) ? $wayforpay : array(),
+				array(
+					'enabled'     => 'yes',
+					'title'       => 'Карткою онлайн',
+					'description' => 'Visa, Mastercard, Apple Pay або Google Pay на захищеній сторінці WayForPay.',
+					'test_mode'   => 'yes',
+				)
+			)
+		);
+		$this->order_gateways( array( 'uack_wayforpay', 'cod' ) );
 		return true;
+	}
+
+	/**
+	 * Puts the gateways in this order at checkout.
+	 *
+	 * @param array<int, string> $ids Gateway IDs, first shown first.
+	 */
+	private function order_gateways( array $ids ): void {
+		$order = get_option( 'woocommerce_gateway_order', array() );
+		$order = is_array( $order ) ? $order : array();
+		foreach ( $ids as $position => $id ) {
+			$order[ $id ] = $position;
+		}
+		update_option( 'woocommerce_gateway_order', $order );
 	}
 
 	/**
@@ -265,6 +293,14 @@ final class Zernyar_Demo_Seeder {
 				);
 			}
 		}
+
+		$terms = get_page_by_path( 'terms' );
+		if ( $terms ) {
+			update_option( 'woocommerce_terms_page_id', $terms->ID );
+			update_option( 'wp_page_for_privacy_policy', $terms->ID );
+		}
+		update_option( 'woocommerce_checkout_privacy_policy_text', 'Ваші дані потрібні, щоб обробити замовлення; що з ними відбувається в демо-магазині, описано в [privacy_policy].' );
+		update_option( 'woocommerce_registration_privacy_policy_text', 'Ваші дані потрібні для роботи облікового запису; подробиці в [privacy_policy].' );
 		return true;
 	}
 

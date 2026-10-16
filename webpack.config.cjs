@@ -6,6 +6,7 @@ module.exports = {
 	...defaultConfig,
 	entry: {
 		checkout: './plugins/ua-commerce-kit/assets/src/checkout/index.js',
+		wayforpay: './plugins/ua-commerce-kit/assets/src/wayforpay/index.js',
 	},
 	output: {
 		...defaultConfig.output,
@@ -13,7 +14,8 @@ module.exports = {
 	},
 	plugins: [
 		...defaultConfig.plugins.filter(
-			( plugin ) => plugin.constructor.name !== 'DependencyExtractionWebpackPlugin'
+			( plugin ) =>
+				plugin.constructor.name !== 'DependencyExtractionWebpackPlugin'
 		),
 		new WooCommerceDependencyExtractionWebpackPlugin(),
 	],
