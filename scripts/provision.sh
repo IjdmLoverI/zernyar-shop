@@ -48,8 +48,7 @@ wp option update woocommerce_calc_taxes no
 wp option update woocommerce_coming_soon no
 wp option update woocommerce_allow_tracking no
 wp option update woocommerce_show_marketplace_suggestions no
-wp option update woocommerce_task_list_hidden yes
-wp option update woocommerce_onboarding_profile '{"skipped":true}' --format=json
+wp option update woocommerce_onboarding_profile '{"skipped":true}' --format=json || true
 
 wp theme activate zernyar
 wp plugin activate ua-commerce-kit zernyar-demo
