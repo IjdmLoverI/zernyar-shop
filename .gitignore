@@ -1,0 +1,12 @@
+/vendor/
+/node_modules/
+/dist/
+/.env
+/test-results/
+/playwright-report/
+/blob-report/
+/.phpunit.cache/
+/plugins/ua-commerce-kit/build/
+.DS_Store
+Thumbs.db
+/.cache/
