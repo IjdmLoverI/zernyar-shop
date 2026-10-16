@@ -3,7 +3,7 @@ Tags: woocommerce, nova poshta, wayforpay, telegram, ukraine
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.4.0
+Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,11 @@ The plugin talks to these services from the store's server:
 * [Telegram Bot API](https://core.telegram.org/bots/api) (`api.telegram.org`): order notifications with the shopper's name, phone and delivery branch go to the chat set in the settings. [Terms](https://telegram.org/tos).
 
 == Changelog ==
+
+= 1.0.0 =
+* First release: Nova Poshta, WayForPay and Telegram, tested end to end in the Checkout block.
+* The checkout request carries the Nova Poshta pick, so a parallel cart update cannot lose it.
+* Filters for the Nova Poshta cache time (`uack_np_cache_ttl`) and the search limit (`uack_np_rate_limit`).
 
 = 0.4.0 =
 * Telegram messages for new orders and online payments, with a test message and a chat ID finder in the settings.

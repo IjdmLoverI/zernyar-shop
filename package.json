@@ -8,9 +8,12 @@
 		"start": "wp-scripts start --config webpack.config.cjs",
 		"lint:js": "wp-scripts lint-js plugins/ua-commerce-kit/assets/src scripts",
 		"lint:css": "wp-scripts lint-style \"plugins/ua-commerce-kit/assets/src/**/*.scss\" \"themes/zernyar/assets/css/*.css\"",
-		"render:packs": "node scripts/render-packs.mjs"
+		"render:packs": "node scripts/render-packs.mjs",
+		"test:e2e": "playwright test",
+		"zips": "npm run build && python scripts/build_zips.py"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "4.13.0",
 		"@playwright/test": "1.64.0",
 		"@woocommerce/dependency-extraction-webpack-plugin": "5.1.0",
 		"@wordpress/scripts": "36.0.0"

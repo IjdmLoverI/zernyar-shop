@@ -10,8 +10,10 @@ namespace UaCommerceKit\NovaPoshta;
 use Automattic\WooCommerce\Blocks\Integrations\IntegrationRegistry;
 use Automattic\WooCommerce\StoreApi\Exceptions\RouteException;
 use Automattic\WooCommerce\StoreApi\Schemas\V1\CartSchema;
+use Automattic\WooCommerce\StoreApi\Schemas\V1\CheckoutSchema;
 use UaCommerceKit\Phone;
 use WC_Order;
+use WP_REST_Request;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -19,8 +21,11 @@ defined( 'ABSPATH' ) || exit;
  * Keeps the shopper's pick in the session, prices delivery to the picked city
  * and checks the pick again before the order is placed.
  *
- * The browser sends the pick with extensionCartUpdate(); the server does not
- * trust its names and looks the branch up by reference.
+ * The browser sends the pick twice: with extensionCartUpdate(), so the rate
+ * follows the city, and with the checkout request itself. The session alone is
+ * not enough: WooCommerce saves the whole session at the end of each request,
+ * so an address update running at the same time can write the pick away.
+ * The server does not trust the names it is sent and looks the branch up by reference.
  */
 final class Checkout {
 
@@ -37,7 +42,7 @@ final class Checkout {
 		}
 		add_action( 'woocommerce_blocks_checkout_block_registration', array( $this, 'register_integration' ) );
 		add_filter( 'woocommerce_cart_shipping_packages', array( $this, 'add_city_to_packages' ) );
-		add_action( 'woocommerce_store_api_checkout_update_order_from_request', array( $this, 'update_order' ) );
+		add_action( 'woocommerce_store_api_checkout_update_order_from_request', array( $this, 'update_order' ), 10, 2 );
 		add_filter( 'woocommerce_get_country_locale', array( $this, 'country_locale' ) );
 	}
 
@@ -56,7 +61,15 @@ final class Checkout {
 				'endpoint'        => CartSchema::IDENTIFIER,
 				'namespace'       => self::STORE_NAMESPACE,
 				'data_callback'   => static fn (): array => self::selection()->to_array(),
-				'schema_callback' => static fn (): array => self::schema(),
+				'schema_callback' => static fn (): array => self::schema( true ),
+				'schema_type'     => ARRAY_A,
+			)
+		);
+		woocommerce_store_api_register_endpoint_data(
+			array(
+				'endpoint'        => CheckoutSchema::IDENTIFIER,
+				'namespace'       => self::STORE_NAMESPACE,
+				'schema_callback' => static fn (): array => self::schema( false ),
 				'schema_type'     => ARRAY_A,
 			)
 		);
@@ -108,15 +121,19 @@ final class Checkout {
 	/**
 	 * Checks the pick and the phone, then writes the branch into the order.
 	 *
-	 * @param WC_Order $order Order being placed.
+	 * @param WC_Order        $order   Order being placed.
+	 * @param WP_REST_Request $request Checkout request with the pick in its extensions.
+	 * @phpstan-param WP_REST_Request<array<string, mixed>> $request
 	 * @throws RouteException When the branch or the phone is missing or wrong.
 	 */
-	public function update_order( WC_Order $order ): void {
+	public function update_order( WC_Order $order, WP_REST_Request $request ): void {
 		if ( ! $order->has_shipping_method( ShippingMethod::ID ) ) {
 			return;
 		}
 
-		$selection = self::selection();
+		$extensions = (array) $request->get_param( 'extensions' );
+		$posted     = Selection::from_array( (array) ( $extensions[ self::STORE_NAMESPACE ] ?? array() ) );
+		$selection  = $posted->has_warehouse() ? $posted : self::selection();
 		if ( ! $selection->has_warehouse() ) {
 			throw new RouteException( 'uack_np_no_branch', esc_html__( 'Choose a Nova Poshta branch or parcel locker for delivery.', 'ua-commerce-kit' ), 400 );
 		}
@@ -173,17 +190,20 @@ final class Checkout {
 	}
 
 	/**
-	 * Store API schema of the pick.
+	 * Store API schema of the pick: read-only in the cart, sent with the checkout.
 	 *
+	 * @param bool $in_cart Read-only fields of the cart, or the fields the checkout sends.
 	 * @return array<string, array<string, mixed>>
 	 */
-	private static function schema(): array {
+	private static function schema( bool $in_cart ): array {
+		$fields = $in_cart ? array_keys( ( new Selection() )->to_array() ) : array( 'city_ref', 'city', 'warehouse_ref' );
 		$schema = array();
-		foreach ( array_keys( ( new Selection() )->to_array() ) as $field ) {
+		foreach ( $fields as $field ) {
 			$schema[ $field ] = array(
 				'type'     => 'string',
 				'context'  => array( 'view', 'edit' ),
-				'readonly' => true,
+				'readonly' => $in_cart,
+				'default'  => '',
 			);
 		}
 		return $schema;
