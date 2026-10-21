@@ -3,7 +3,7 @@
  * Plugin Name:       Zernyar Demo
  * Plugin URI:        https://github.com/IjdmLoverI/zernyar-shop
  * Description:       Demo content for the Zernyar coffee store and settings for free hosting.
- * Version:           0.3.0
+ * Version:           1.0.0
  * Requires at least: 7.0
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce

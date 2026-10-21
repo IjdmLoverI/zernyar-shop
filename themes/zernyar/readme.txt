@@ -2,7 +2,7 @@
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.1
-Version: 0.2.0
+Version: 1.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,3 +33,14 @@ Photos from Unsplash, Unsplash License (https://unsplash.com/license):
 * assets/images/brew-espresso.webp: René Porter
 * assets/images/brew-filter.webp: Battlecreek Coffee Roasters
 * assets/images/brew-cezve.webp: Kyrylo Kholopkin
+
+== Changelog ==
+
+= 1.0.0 =
+* Stable release; the variation "Clear" link gets enough contrast.
+
+= 0.2.0 =
+* Language switcher in the header and English strings for the store.
+
+= 0.1.0 =
+* Home page, catalog with filters, product page, cart and checkout.

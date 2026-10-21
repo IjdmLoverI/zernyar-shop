@@ -52,7 +52,7 @@
 	height: 1.35em;
 	flex: none;
 	background: var(--wp--preset--color--accent);
-	mask: url("../icons/bean.svg") center / contain no-repeat;
+	mask: url(../icons/bean.svg) center / contain no-repeat;
 }
 
 .site-header__back {
@@ -168,19 +168,19 @@
 }
 
 .zernyar-benefit--roast {
-	--zernyar-icon: url("../icons/flame.svg");
+	--zernyar-icon: url(../icons/flame.svg);
 }
 
 .zernyar-benefit--grind {
-	--zernyar-icon: url("../icons/coffee.svg");
+	--zernyar-icon: url(../icons/coffee.svg);
 }
 
 .zernyar-benefit--delivery {
-	--zernyar-icon: url("../icons/package.svg");
+	--zernyar-icon: url(../icons/package.svg);
 }
 
 .zernyar-benefit--card {
-	--zernyar-icon: url("../icons/credit-card.svg");
+	--zernyar-icon: url(../icons/credit-card.svg);
 }
 
 .zernyar-benefit__title {
@@ -356,6 +356,7 @@
 }
 
 @media (min-width: 782px) {
+
 	.zernyar-catalog__filters .wc-block-product-filters {
 		position: sticky;
 		top: 6rem;
@@ -527,6 +528,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
 	*,
 	*::before,
 	*::after {
@@ -538,6 +540,7 @@
 /* Narrow screens */
 
 @media (max-width: 600px) {
+
 	.zernyar-card__footer {
 		flex-direction: column;
 		align-items: stretch;
@@ -583,4 +586,9 @@
 
 .zernyar-lang a[aria-current] {
 	color: var(--wp--preset--color--accent);
+}
+
+.zernyar-product .reset_variations {
+	color: var(--wp--preset--color--accent);
+	font-size: var(--wp--preset--font-size--x-small);
 }

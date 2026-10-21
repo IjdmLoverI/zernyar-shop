@@ -5,7 +5,10 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import { extensionCartUpdate } from '@woocommerce/blocks-checkout';
-import { VALIDATION_STORE_KEY } from '@woocommerce/block-data';
+import {
+	CHECKOUT_STORE_KEY,
+	VALIDATION_STORE_KEY,
+} from '@woocommerce/block-data';
 import { getSetting } from '@woocommerce/settings';
 import Combobox from './combobox';
 
@@ -58,15 +61,37 @@ export default function Picker( { cart, extensions } ) {
 
 	const { setValidationErrors, clearValidationError } =
 		useDispatch( VALIDATION_STORE_KEY );
+	const { setExtensionData } = useDispatch( CHECKOUT_STORE_KEY );
 	const error = useSelect(
 		( select ) =>
 			select( VALIDATION_STORE_KEY ).getValidationError( ERROR_ID ),
 		[]
 	);
 
-	// The cart object is new on every update; follow the server only when the pick changes.
-	const savedKey = `${ saved.city_ref ?? '' }|${ saved.warehouse_ref ?? '' }`;
-	useEffect( () => setPick( saved ), [ savedKey ] ); // eslint-disable-line react-hooks/exhaustive-deps
+	// The cart object is new on every update, so compare picks by their references.
+	const key = ( value ) =>
+		`${ value.city_ref ?? '' }|${ value.warehouse_ref ?? '' }`;
+	const savedKey = key( saved );
+	useEffect( () => {
+		if ( ! pick.city_ref ) {
+			setPick( saved );
+		} else if ( savedKey !== key( pick ) && ! saving ) {
+			// Another cart update saved the session without the pick; send it again.
+			extensionCartUpdate( {
+				namespace: settings.namespace,
+				data: pick,
+			} );
+		}
+	}, [ savedKey ] ); // eslint-disable-line react-hooks/exhaustive-deps
+
+	// The checkout request carries the pick too, so a lost session cannot lose the order's branch.
+	useEffect( () => {
+		setExtensionData( settings.namespace, {
+			city_ref: pick.city_ref ?? '',
+			city: pick.city ?? '',
+			warehouse_ref: pick.warehouse_ref ?? '',
+		} );
+	}, [ pick.city_ref, pick.warehouse_ref ] ); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect( () => {
 		if ( active && ! pick.warehouse_ref ) {

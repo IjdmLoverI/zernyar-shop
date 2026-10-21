@@ -33,6 +33,7 @@ docker compose run --rm tools composer analyse   # PHPStan, level 8, with WordPr
 docker compose run --rm tools composer test      # PHPUnit unit tests
 bash scripts/smoke.sh                            # the store is up, the plugins and theme are active
 bash scripts/plugin-check.sh                     # the official Plugin Check
+npm run test:e2e                                 # end-to-end tests, see testing.md
 ```
 
 The unit tests run without WordPress. [Brain Monkey](https://giacomo.gitbook.io/brain-monkey) stands in for the WordPress functions, so the logic is kept in classes that take plain values, such as `HttpResult`, instead of calling the HTTP API themselves.
